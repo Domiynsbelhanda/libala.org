@@ -37,9 +37,6 @@
                          alt="Photo du couple"
                     >
 
-                    <div class="hero-img-inner-shape">
-                        <img src="{{asset('assets/images/slider/shape9.svg')}}" alt="">
-                    </div>
                     <div class="hero-img-inner-shape-2">
                         <img src="{{asset('assets/images/slider/shape10.svg')}}" alt="">
                     </div>
