@@ -10,7 +10,7 @@
     <meta name="author" content="wpOceans">
     <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/favicon.png')}}">
 
-    <title> Habibi - Wedding & Wedding Planner PHP Template</title>
+    <title> @yield('title') - Libala.org</title>
 
     <link href="{{asset('assets/css/themify-icons.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -30,6 +30,15 @@
     <link href="{{asset('assets/css/jquery-ui.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/auth-pages.css')}}" rel="stylesheet">
     <link href="{{asset('assets/sass/style.css')}}" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+    </style>
 </head>
 <body>
 
@@ -49,7 +58,7 @@
     </div>
     <!-- end preloader -->
 
-    @include('partials._header')
+{{--    @include('partials._header')--}}
 
     @yield('content')
 

@@ -38,19 +38,19 @@ class EventResource extends Resource
 
                 ])->columns(3),
 
+                Forms\Components\Section::make('Mariage civil')
+                    ->schema([
+                        Forms\Components\TextInput::make('civil_commune')->label("Commune"),
+                        Forms\Components\DatePicker::make('civil_date')->label("Date"),
+                        Forms\Components\TimePicker::make('civil_time')->label("Heure"),
+                    ])->columns(2),
+
                 Forms\Components\Section::make('Mariage religieux')
                     ->schema([
                         Forms\Components\TextInput::make('church_name')->label("Église/Paroisse"),
                         Forms\Components\TextInput::make('church_address')->label("Adresse"),
                         Forms\Components\DatePicker::make('church_date')->label("Date"),
                         Forms\Components\TimePicker::make('church_time')->label("Heure"),
-                    ])->columns(2),
-
-                Forms\Components\Section::make('Mariage civil')
-                    ->schema([
-                        Forms\Components\TextInput::make('civil_commune')->label("Commune"),
-                        Forms\Components\DatePicker::make('civil_date')->label("Date"),
-                        Forms\Components\TimePicker::make('civil_time')->label("Heure"),
                     ])->columns(2),
 
                 Forms\Components\Section::make('Soirée')

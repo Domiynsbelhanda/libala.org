@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $event->groom_name . ' & ' . $event->bride_name)
+
 @section('content')
     <section class="static-hero-s2">
         <div class="hero-container">
@@ -9,16 +11,20 @@
                         <div class="col-xl-6 col-lg-6 col-12">
                             <div class="wpo-static-hero-inner">
                                 <div class="slide-title-sub wow fadeInUp" data-wow-duration="1400ms">
-                                    <h3>
+                                    <h3 class="dancing-script">
                                         {{$event->groom_name}} & {{$event->bride_name}}
                                     </h3>
                                 </div>
                                 <div class="slide-title wow fadeInUp" data-wow-duration="1500ms">
-                                    <h2>Save the Date</h2>
+                                    <h2 class="dancing-script">
+                                        Save the Date
+                                    </h2>
                                 </div>
                                 <div data-swiper-parallax="400" class="slide-text wow fadeInUp"
                                      data-wow-duration="1600ms">
-                                    <p>We Are Getting Married November 15,2024</p>
+                                    <p>
+                                        {{ mb_strtoupper(\Carbon\Carbon::parse($event->wedding_date)->translatedFormat('l d F Y')) }}
+                                    </p>
                                 </div>
                                 <div class="shape-2 wow fadeInUp" data-wow-duration="1800ms"><img
                                         src="{{asset('assets/images/slider/shape2.svg')}}" alt=""></div>
@@ -83,4 +89,106 @@
         </div>
     </section>
     <!-- end of hero slider -->
+
+    <!-- start wpo-event-section -->
+    <section class="wpo-event-section section-padding" id="event">
+        <div class="container">
+            <div class="wpo-section-title">
+{{--                <span>Our Wedding</span>--}}
+                <h2>Programme</h2>
+            </div>
+            <div class="wpo-event-wrap">
+                @php
+                    $eventCount = collect([
+                        $event->civil_date || $event->civil_time || $event->civil_commune,
+                        $event->church_name || $event->church_date || $event->church_time,
+                        $event->reception_date || $event->reception_time || $event->reception_hall,
+                    ])->filter()->count();
+                @endphp
+
+
+                <div class="row justify-content-center">
+                    {{-- Mariage Civil --}}
+                    @if($event->civil_date || $event->civil_time || $event->civil_commune)
+                        <div class="col {{ $eventCount == 1 ? 'col-lg-6' : ($eventCount == 2 ? 'col-lg-5' : 'col-lg-4') }} col-md-6 col-12">
+                            <div class="wpo-event-item wow fadeInUp" data-wow-duration="1000ms">
+                                <div class="wpo-event-text">
+                                    <div class="title">
+                                        <h2>Mariage Civil</h2>
+                                    </div>
+                                    <ul>
+                                        @if($event->civil_date || $event->civil_time)
+                                            <li>
+                                                {{ mb_strtoupper(\Carbon\Carbon::parse($event->civil_date)->translatedFormat('l d F Y')) ?? '' }}<br>
+                                                <i class="fa-solid fa-clock"></i> {{ $event->civil_time ? \Carbon\Carbon::parse($event->civil_time)->format('H:i') : '' }}
+                                            </li>
+                                        @endif
+                                        @if($event->civil_commune)
+                                            <li>Commune : {{ $event->civil_commune }}</li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    {{-- Mariage Religieux --}}
+                    @if($event->church_name || $event->church_date || $event->church_time)
+                        <div class="col {{ $eventCount == 1 ? 'col-lg-6' : ($eventCount == 2 ? 'col-lg-5' : 'col-lg-4') }} col-md-6 col-12">
+                            <div class="wpo-event-item wow fadeInUp" data-wow-duration="1200ms">
+                                <div class="wpo-event-text">
+                                    <div class="title">
+                                        <h2>Mariage Religieux</h2>
+                                    </div>
+                                    <ul>
+                                        @if($event->church_date || $event->church_time)
+                                            <li>
+                                                {{ mb_strtoupper(\Carbon\Carbon::parse($event->church_date)->translatedFormat('l d F Y')) ?? '' }}<br>
+                                                {{ $event->church_time ? \Carbon\Carbon::parse($event->church_time)->format('H:i') : '' }}
+                                            </li>
+                                        @endif
+                                        @if($event->church_name)
+                                            <li>{{ $event->church_name }}</li>
+                                        @endif
+                                        @if($event->church_address)
+                                            <li>{{ $event->church_address }}</li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    {{-- Soirée --}}
+                    @if($event->reception_date || $event->reception_time || $event->reception_hall)
+                        <div class="col {{ $eventCount == 1 ? 'col-lg-6' : ($eventCount == 2 ? 'col-lg-5' : 'col-lg-4') }} col-md-6 col-12">
+                            <div class="wpo-event-item wow fadeInUp" data-wow-duration="1400ms">
+                                <div class="wpo-event-text">
+                                    <div class="title">
+                                        <h2>Soirée</h2>
+                                    </div>
+                                    <ul>
+                                        @if($event->reception_date || $event->reception_time)
+                                            <li>
+                                                {{ mb_strtoupper(\Carbon\Carbon::parse($event->reception_date)->translatedFormat('l d F Y')) ?? '' }}<br>
+                                                {{ $event->reception_time ? \Carbon\Carbon::parse($event->reception_time)->format('H:i') : '' }}
+                                            </li>
+                                        @endif
+                                        @if($event->reception_hall)
+                                            <li>{{ $event->reception_hall }}</li>
+                                        @endif
+                                        @if($event->reception_address)
+                                            <li>{{ $event->reception_address }}</li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+        </div> <!-- end container -->
+    </section>
+    <!-- end wpo-event-section -->
 @endsection
