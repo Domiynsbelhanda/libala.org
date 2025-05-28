@@ -86,13 +86,17 @@ class EventResource extends Resource
                 Tables\Columns\TextColumn::make('wedding_date')->label('Date du mariage')->date(),
                 Tables\Columns\TextColumn::make('manager_name')->label('Gérant'),
                 Tables\Columns\TextColumn::make('manager_contact')->label('Contact'),
-                Tables\Columns\TextColumn::make('created_at')->label('Créé le')->since(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+
+                Tables\Actions\Action::make('Partager')
+                    ->icon('heroicon-o-share')
+                    ->url(fn($record) => route('event.detail', ['reference' => $record->reference]))
+                    ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
