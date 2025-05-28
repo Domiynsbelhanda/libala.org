@@ -31,6 +31,30 @@
     <link href="{{asset('assets/css/auth-pages.css')}}" rel="stylesheet">
     <link href="{{asset('assets/sass/style.css')}}" rel="stylesheet">
 
+
+    <meta name="description" content="Organisez votre mariage avec élégance. Invitations, placement des invités, planification – tout en ligne.">
+    <meta name="keywords" content="mariage, invitation mariage, gestion invités, libala, Congo, digital wedding">
+    <meta name="author" content="Wedding Manager">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <meta name="description" content="@yield('description', 'Organisez votre mariage avec élégance et simplicité.')">
+    <meta name="keywords" content="@yield('keywords', 'mariage, invitations, libala, Congo, digital wedding')">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="@yield('og_title', 'Wedding Manager – Invitations digitales')">
+    <meta property="og:description" content="@yield('og_description', 'Gérez vos invités et événements de mariage en ligne.')">
+    <meta property="og:image" content="@yield('og_image', asset('images/wedding-cover.jpg'))">
+    <meta property="og:url" content="@yield('og_url', url()->current())">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('twitter_title', 'Wedding Manager – Invitations digitales')">
+    <meta name="twitter:description" content="@yield('twitter_description', 'Invitations de mariage digitales au Congo.')">
+    <meta name="twitter:image" content="@yield('twitter_image', asset('images/wedding-cover.jpg'))">
+
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 

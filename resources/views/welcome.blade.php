@@ -5,6 +5,29 @@
     <title>Bienvenue sur Libala.org</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <meta name="description" content="Organisez votre mariage avec élégance. Invitations, placement des invités, planification – tout en ligne.">
+    <meta name="keywords" content="mariage, invitation mariage, gestion invités, libala, Congo, digital wedding">
+    <meta name="author" content="Wedding Manager">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:title" content="Wedding Manager – Invitations de mariage digitales">
+    <meta property="og:description" content="Créez et gérez vos invitations de mariage en ligne. Simple, rapide et élégant.">
+    <meta property="og:image" content="{{ asset('images/wedding-cover.jpg') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Wedding Manager">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wedding Manager – Invitations de mariage digitales">
+    <meta name="twitter:description" content="Organisez le plus beau jour de votre vie avec des invitations modernes et personnalisées.">
+    <meta name="twitter:image" content="{{ asset('images/wedding-cover.jpg') }}">
+
+
     <style>
         body {
             margin: 0;
