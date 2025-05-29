@@ -63,6 +63,7 @@ class UserResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
+//        dd(!auth()->guard('event_manager')->check());
         return !auth()->guard('event_manager')->check();
     }
 
