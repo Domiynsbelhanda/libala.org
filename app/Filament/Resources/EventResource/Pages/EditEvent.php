@@ -22,6 +22,7 @@ class EditEvent extends EditRecord
 
             Action::make('Invités')
                 ->label('🧑🏽‍🤝‍🧑🏽 Invités')
+                ->url(fn ($record) => static::getResource()::getUrl('manage-guests', ['record' => $record]))
                 ->color('success')
                 ->tooltip('Voir la liste des invités'),
 
