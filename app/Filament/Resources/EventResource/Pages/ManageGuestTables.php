@@ -8,11 +8,13 @@ use App\Models\Table as TableModel;
 use App\Models\Guest;
 use App\Models\Event;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Tables;
 use Filament\Resources\Pages\Page;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\DB;
 
 class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables\Contracts\HasTable
 {
@@ -36,20 +38,53 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
 
     public function form(Form $form): Form
     {
+        $assignedGuestIds = DB::table('guest_table')
+            ->where('event_id', $this->event->id)
+            ->pluck('guest_id')
+            ->toArray();
+
+        $remainingCount = Guest::where('event_id', $this->event->id)
+            ->whereNotIn('id', $assignedGuestIds)
+            ->count();
+
         return $form
             ->schema([
                 Forms\Components\Grid::make(2)
                     ->schema([
-                        Forms\Components\Select::make('table_id')
+                        Select::make('table_id')
                             ->label('Table')
-                            ->options(TableModel::where('event_id', $this->event->id)->pluck('name', 'id'))
+                            ->options(function () {
+                                return TableModel::where('event_id', $this->event->id)
+                                    ->get()
+                                    ->filter(function ($table) {
+                                        $assignedCount = DB::table('guest_table')
+                                            ->where('table_id', $table->id)
+                                            ->count();
+                                        return $assignedCount < $table->capacity;
+                                    })
+                                    ->mapWithKeys(function ($table) {
+                                        $assignedCount = DB::table('guest_table')->where('table_id', $table->id)->count();
+                                        $remaining = $table->capacity - $assignedCount;
+                                        return [$table->id => $table->name . " ({$remaining} places restantes)"];
+                                    });
+                            })
                             ->required(),
 
-                        Forms\Components\Select::make('guest_id')
-                            ->label('Invité')
+                        Select::make('guest_id')
+                            ->label("Invité ({$remainingCount} restant" . ($remainingCount > 1 ? 's' : '') . ')')
                             ->searchable()
-                            ->options(Guest::where('event_id', $this->event->id)->pluck('name', 'id'))
-                            ->required(),
+                            ->options(function () {
+                                $assignedGuestIds = DB::table('guest_table')
+                                    ->where('event_id', $this->event->id)
+                                    ->pluck('guest_id')
+                                    ->toArray();
+
+                                return Guest::where('event_id', $this->event->id)
+                                    ->whereNotIn('id', $assignedGuestIds)
+                                    ->pluck('name', 'id');
+                            })
+                            ->preload()
+                            ->required()
                     ]),
             ])
             ->statePath('data');
