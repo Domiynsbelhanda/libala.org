@@ -11,7 +11,7 @@ class GuestTable extends Model
 
     protected $table = 'guest_table';
 
-    protected $fillable = ['event_id', 'guest_id', 'table_id'];
+    protected $fillable = ['event_id', 'guest_id', 'table_id', 'code'];
 
     public function guest()
     {
@@ -22,4 +22,10 @@ class GuestTable extends Model
     {
         return $this->belongsTo(Table::class);
     }
+
+    public function event()
+    {
+        return $this->belongsTo(\App\Models\Event::class);
+    }
+
 }

@@ -96,6 +96,7 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
             'event_id' => $this->event->id,
             'guest_id' => $this->data['guest_id'],
             'table_id' => $this->data['table_id'],
+            'code' => $this->generateUniqueCode(),
         ]);
 
         $this->form->fill();
@@ -111,11 +112,12 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
         return $table
             ->query(
                 GuestTable::query()
-                    ->with(['guest', 'table'])
+                    ->with(['guest', 'table', 'event'])
                     ->where('event_id', $this->event->id)
                     ->orderBy('table_id')
             )
             ->columns([
+                Tables\Columns\TextColumn::make('code')->label('Code de réservation'),
                 Tables\Columns\TextColumn::make('table.name')->label('Table'),
                 Tables\Columns\TextColumn::make('guest.name')->label('Invité'),
                 Tables\Columns\TextColumn::make('guest.phone')->label('Téléphone'),
@@ -128,6 +130,44 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
                     ),
             ])
             ->actions([
+                Tables\Actions\Action::make('whatsapp_invite')
+                    ->label('Partager')
+                    ->icon('heroicon-o-chat-bubble-left-ellipsis')
+                    ->color('success')
+                    ->url(function ($record) {
+                        $guest = $record->guest;
+                        $event = $record->event;
+
+                        // On génère le message WhatsApp
+                        $message = "🎉 Invitation au mariage de {$event->bride_name} & {$event->groom_name}\n\n";
+                        $message .= "📅 Date: " . \Carbon\Carbon::parse($event->wedding_date)->translatedFormat('l d F Y') . "\n";
+                        $message .= "🪑 Table: {$record->table->name}\n";
+                        $message .= "🎟️ Code: {$record->code}\n\n";
+                        $message .= "👉 Cliquez ici pour voir votre invitation : " . route('event.invitation', [
+                                'reference' => $event->reference,
+                                'code' => $record->code,
+                            ]);
+
+                        $phone = preg_replace('/[^0-9]/', '', $guest->phone); // nettoie le numéro
+                        $phone = ltrim($phone, '0'); // retire le 0 initial si nécessaire
+
+                        return 'https://wa.me/' . $phone . '?text=' . urlencode($message);
+                    })
+                    ->openUrlInNewTab(),
+
+
+                Tables\Actions\Action::make('voir_invitation')
+                    ->label('Voir l’invitation')
+                    ->icon('heroicon-o-eye')
+                    ->color('primary')
+                    ->url(function ($record) {
+                        return route('event.invitation', [
+                            'reference' => $record->event->reference,
+                            'code' => $record->code,
+                        ]);
+                    })
+                    ->openUrlInNewTab(),
+
                 Tables\Actions\DeleteAction::make(),
             ]);
     }
@@ -147,4 +187,14 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
                 ->color('gray'),
         ];
     }
+
+    private function generateUniqueCode(): string
+    {
+        do {
+            $code = strtoupper(bin2hex(random_bytes(6))); // ex: 3C5FA8
+        } while (GuestTable::where('code', $code)->exists());
+
+        return $code;
+    }
+
 }
