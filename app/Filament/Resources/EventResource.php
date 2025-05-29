@@ -125,6 +125,7 @@ class EventResource extends Resource
             'edit' => Pages\EditEvent::route('/{record}/edit'),
             'manage-tables' => ManageTables::route('/{record}/tables'),
             'manage-guests' => Pages\ManageGuests::route('/{record}/guests'),
+            'guests-by-table' => Pages\ManageGuestTables::route('/{record}/guests-by-table'),
         ];
     }
 }

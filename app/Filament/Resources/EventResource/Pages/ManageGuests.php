@@ -129,5 +129,4 @@ class ManageGuests extends Page implements HasForms, HasTable
         return "Gestion des invités ($current/$total)";
     }
 
-
 }

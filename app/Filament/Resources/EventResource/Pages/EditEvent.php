@@ -28,6 +28,7 @@ class EditEvent extends EditRecord
 
             Action::make('Par Table')
                 ->label('📋 Invités par table')
+                ->url(fn ($record) => static::getResource()::getUrl('guests-by-table', ['record' => $record]))
                 ->color('warning')
                 ->tooltip('Voir la répartition des invités par table'),
 
