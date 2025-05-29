@@ -28,6 +28,11 @@ class EventResource extends Resource
                         Forms\Components\TextInput::make('bride_name')->label("Nom de la mariée (femme)")->required(),
                         Forms\Components\TextInput::make('groom_name')->label("Nom du marié (homme)")->required(),
                         Forms\Components\DatePicker::make('wedding_date')->label("Date du mariage")->required(),
+                        Forms\Components\TextInput::make('max_guests')
+                            ->label('Nombre maximal d’invités')
+                            ->numeric()
+                            ->minValue(1)
+                            ->required(),
                         Forms\Components\FileUpload::make('couple_photo')
                             ->label('Photo du couple')
                             ->image()

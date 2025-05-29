@@ -57,8 +57,15 @@ class ManageGuests extends Page implements HasForms, HasTable
         return $table
             ->query(Guest::query()->where('event_id', $this->event->id))
             ->columns([
-                Tables\Columns\TextColumn::make('name')->label('Nom'),
-                Tables\Columns\TextColumn::make('phone')->label('Téléphone'),
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Nom')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('phone')
+                    ->label('Téléphone')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')->dateTime('d/m/Y à H:i'),
             ])
             ->actions([
@@ -76,11 +83,21 @@ class ManageGuests extends Page implements HasForms, HasTable
 
     public function create(): void
     {
-        $this->validate();
+        $guestCount = Guest::where('event_id', $this->event->id)->count();
+
+        if ($this->event->max_guests !== null && $guestCount >= $this->event->max_guests) {
+            Notification::make()
+                ->title('Nombre limite atteint')
+                ->body('Impossible d’ajouter un autre invité, la limite est atteinte.')
+                ->danger()
+                ->send();
+
+            return;
+        }
 
         Guest::create([
             'name' => $this->data['name'],
-            'phone' => $this->data['phone'] ?? null,
+            'phone' => $this->data['phone'],
             'event_id' => $this->event->id,
         ]);
 
@@ -91,4 +108,26 @@ class ManageGuests extends Page implements HasForms, HasTable
             ->success()
             ->send();
     }
+
+
+    public function getHeaderActions(): array
+    {
+        return [
+            \Filament\Actions\Action::make('Retour à l’événement')
+                ->label('Modifier le mariage')
+                ->url(route('filament.admin.resources.events.edit', ['record' => $this->event->id]))
+                ->icon('heroicon-o-arrow-left')
+                ->color('gray'),
+        ];
+    }
+
+    public function getTitle(): string
+    {
+        $total = $this->event->max_guests ?? '∞';
+        $current = $this->event->guests()->count();
+
+        return "Gestion des invités ($current/$total)";
+    }
+
+
 }

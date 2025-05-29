@@ -30,7 +30,8 @@ class Event extends Model
         'manager_name',
         'manager_contact',
         'password',
-        'couple_photo'
+        'couple_photo',
+        'max_guests'
     ];
 
     protected static function boot()
@@ -49,4 +50,9 @@ class Event extends Model
     }
 
     protected $hidden = ['password'];
+
+    public function guests()
+    {
+        return $this->hasMany(\App\Models\Guest::class);
+    }
 }
