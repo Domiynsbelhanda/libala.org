@@ -16,4 +16,13 @@ class EditUser extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    public function mount($record): void
+    {
+        parent::mount($record);
+
+        if (auth()->guard('event_manager')->check()) {
+            $this->redirectRoute('event.login.form');
+        }
+    }
 }

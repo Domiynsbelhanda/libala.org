@@ -32,7 +32,8 @@ class EditEvent extends EditRecord
                 ->color('warning')
                 ->tooltip('Voir la répartition des invités par table'),
 
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+                ->visible(!auth()->guard('event_manager')->check()),
         ];
     }
 }

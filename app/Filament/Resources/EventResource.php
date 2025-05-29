@@ -32,6 +32,7 @@ class EventResource extends Resource
                             ->label('Nombre maximal d’invités')
                             ->numeric()
                             ->minValue(1)
+                            ->disabled(auth()->guard('event_manager')->check())
                             ->required(),
                         Forms\Components\FileUpload::make('couple_photo')
                             ->label('Photo du couple')
@@ -69,14 +70,20 @@ class EventResource extends Resource
                 Forms\Components\Section::make('Organisation')
                     ->schema([
                         Forms\Components\TextInput::make('theme')->label("Thème / Dress Code"),
-                        Forms\Components\TextInput::make('manager_name')->label("Nom du gérant")->required(),
-                        Forms\Components\TextInput::make('manager_contact')->label("Contact du gérant")->required(),
+                        Forms\Components\TextInput::make('manager_name')->label("Nom du gérant")
+                            ->disabled(auth()->guard('event_manager')->check())
+                            ->required(),
+                        Forms\Components\TextInput::make('manager_contact')->label("Contact du gérant")
+                            ->disabled(auth()->guard('event_manager')->check())
+                            ->required(),
                         Forms\Components\TextInput::make('password')
                             ->label('Mot de passe de gestion')
                             ->password()
                             ->required(fn(string $context) => $context === 'create')
                             ->dehydrateStateUsing(fn($state) => !empty($state) ? bcrypt($state) : null)
-                            ->dehydrated(fn($state) => filled($state)),
+                            ->dehydrated(fn($state) => filled($state))
+                            ->visible(!auth()->guard('event_manager')->check()),
+
                     ])->columns(2),
             ]);
     }
@@ -115,6 +122,11 @@ class EventResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return !auth()->guard('event_manager')->check();
     }
 
     public static function getPages(): array

@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'event_manager' => [
+            'driver' => 'session',
+            'provider' => 'events',
+        ],
     ],
 
     /*
@@ -63,6 +68,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'events' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Event::class,
         ],
 
         // 'users' => [

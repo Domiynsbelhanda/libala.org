@@ -16,4 +16,13 @@ class ListUsers extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    public function mount(): void
+    {
+        if (auth()->guard('event_manager')->check()) {
+            redirect()->route('event.login.form');
+        }
+
+        parent::mount();
+    }
 }

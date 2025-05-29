@@ -9,4 +9,13 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateEvent extends CreateRecord
 {
     protected static string $resource = EventResource::class;
+
+    public function mount(): void
+    {
+        if (auth()->guard('event_manager')->check()) {
+            redirect()->route('event.login.form');
+        }
+
+        parent::mount();
+    }
 }

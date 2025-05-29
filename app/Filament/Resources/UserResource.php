@@ -61,6 +61,11 @@ class UserResource extends Resource
         ];
     }
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return !auth()->guard('event_manager')->check();
+    }
+
     public static function getPages(): array
     {
         return [
