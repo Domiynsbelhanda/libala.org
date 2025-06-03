@@ -36,8 +36,6 @@
     <meta name="description" content="@yield('description', 'Organisez votre mariage avec élégance et simplicité.')">
     <meta name="keywords" content="@yield('keywords', 'mariage, invitations, libala, Congo, digital wedding')">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="@yield('og_title', 'Wedding Manager – Invitations digitales')">
     <meta property="og:description" content="@yield('og_description', 'Gérez vos invités et événements de mariage en ligne.')">
     <meta property="og:image" content="@yield('og_image', asset('images/wedding-cover.jpg'))">
     <meta property="og:url" content="@yield('og_url', url()->current())">
