@@ -114,7 +114,7 @@ class ManageGuests extends Page implements HasForms, HasTable
     {
         return [
             \Filament\Actions\Action::make('Retour à l’événement')
-                ->label('Modifier le mariage')
+                ->label('Retour')
                 ->url(route('filament.admin.resources.events.edit', ['record' => $this->event->id]))
                 ->icon('heroicon-o-arrow-left')
                 ->color('gray'),

@@ -120,6 +120,16 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
                 Tables\Columns\TextColumn::make('code')->label('Code de réservation'),
                 Tables\Columns\TextColumn::make('table.name')->label('Table'),
                 Tables\Columns\TextColumn::make('guest.name')->label('Invité'),
+                Tables\Columns\IconColumn::make('is_attending')
+                    ->label('Présence')
+                    ->boolean(),
+
+                Tables\Columns\TextColumn::make('number_of_people')
+                    ->label('Nb personnes'),
+
+                Tables\Columns\TextColumn::make('additional_info')
+                    ->label('Infos')
+                    ->limit(30),
                 Tables\Columns\TextColumn::make('guest.phone')->label('Téléphone'),
             ])
             ->filters([
@@ -181,7 +191,7 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
     {
         return [
             \Filament\Actions\Action::make('Retour à l’événement')
-                ->label('Modifier le mariage')
+                ->label('Retour')
                 ->url(route('filament.admin.resources.events.edit', ['record' => $this->event->id]))
                 ->icon('heroicon-o-arrow-left')
                 ->color('gray'),

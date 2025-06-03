@@ -121,12 +121,11 @@ class ManageTables extends Page implements Forms\Contracts\HasForms, Tables\Cont
     public function getHeaderActions(): array
     {
         return [
-            Action::make('Retour à l\'événement')
-                ->label('↩️ Voir l\'événement')
-                ->url(route('filament.admin.resources.events.edit', ['record' => $this->event->id])) // ou 'id' si tu utilises ID
-                ->color('secondary')
-                ->icon('heroicon-o-arrow-left'),
-            ...parent::getHeaderActions(),
+            \Filament\Actions\Action::make('Retour à l’événement')
+                ->label('Retour')
+                ->url(route('filament.admin.resources.events.edit', ['record' => $this->event->id]))
+                ->icon('heroicon-o-arrow-left')
+                ->color('gray'),
         ];
     }
 }

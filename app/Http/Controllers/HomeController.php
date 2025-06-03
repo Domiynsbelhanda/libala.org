@@ -23,7 +23,7 @@ class HomeController extends Controller
         $invitation = GuestTable::where('code', $code)->firstOrFail();
         $invitationUrl = route('event.invitation', ['reference' => $reference, 'code' => $code]);
 
-        return view('pages.templates.template_1',
+        return view('pages.templates.template_2',
             ['event'=>$event, 'invitation'=>$invitation,
                 'qrcode' => QrCode::size(200)->generate($invitationUrl),
             ]
