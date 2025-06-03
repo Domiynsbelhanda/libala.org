@@ -11,6 +11,12 @@ class EditEvent extends EditRecord
 {
     protected static string $resource = EventResource::class;
 
+    public function getTitle(): string
+    {
+        return 'Gestion du mariage de ' . $this->record->groom_name . ' & ' . $this->record->bride_name;
+    }
+
+
     protected function getHeaderActions(): array
     {
         return [
