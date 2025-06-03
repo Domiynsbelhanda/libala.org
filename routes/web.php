@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/evenement/{reference}', [HomeController::class, 'event'])->name('event.detail');
 Route::get('/evenement/{reference}/invitation/{code}', [HomeController::class, 'invitation'])->name('event.invitation');
+Route::post('/evenement/{reference}/invitation/{code}/rsvp', [HomeController::class, 'rsvp'])->name('guest.rsvp');
+
 
 Route::get('/event/login', [\App\Http\Controllers\EventLoginController::class, 'showLoginForm'])->name('event.login.form');
 Route::post('/event/login', [\App\Http\Controllers\EventLoginController::class, 'login'])->name('event.login');

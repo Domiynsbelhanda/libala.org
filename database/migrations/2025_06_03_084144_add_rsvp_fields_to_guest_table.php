@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('guests', function (Blueprint $table) {
+        Schema::table('guest_table', function (Blueprint $table) {
             $table->boolean('is_attending')->nullable();
             $table->integer('number_of_people')->nullable();
             $table->text('additional_info')->nullable();
@@ -23,8 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('guests', function (Blueprint $table) {
-            //
+        Schema::table('guest_table', function (Blueprint $table) {
+            $table->dropColumn(['is_attending', 'number_of_people', 'additional_info']);
         });
     }
 };
