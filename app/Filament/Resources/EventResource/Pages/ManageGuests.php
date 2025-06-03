@@ -55,7 +55,10 @@ class ManageGuests extends Page implements HasForms, HasTable
     public function table(Table $table): Table
     {
         return $table
-            ->query(Guest::query()->where('event_id', $this->event->id))
+            ->query(Guest::query()
+                ->where('event_id', $this->event->id)
+                ->orderByDesc('created_at')
+            )
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nom')
