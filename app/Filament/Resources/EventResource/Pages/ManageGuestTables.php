@@ -120,6 +120,9 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
                 Tables\Columns\TextColumn::make('code')->label('Code de réservation'),
                 Tables\Columns\TextColumn::make('table.name')->label('Table'),
                 Tables\Columns\TextColumn::make('guest.name')->label('Invité'),
+                Tables\Columns\TextColumn::make('arrival_time')
+                    ->label('Heure d\'arrivée')
+                    ->time('H:i'),
                 Tables\Columns\IconColumn::make('is_attending')
                     ->label('Présence')
                     ->boolean(),

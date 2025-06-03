@@ -11,7 +11,7 @@ class GuestTable extends Model
 
     protected $table = 'guest_table';
 
-    protected $fillable = ['event_id', 'guest_id', 'table_id', 'code', 'is_attending', 'number_of_people', 'additional_info'];
+    protected $fillable = ['event_id', 'guest_id', 'table_id', 'code', 'is_attending', 'number_of_people', 'additional_info', 'arrival_time'];
 
     public function guest()
     {

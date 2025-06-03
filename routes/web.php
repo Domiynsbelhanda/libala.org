@@ -22,6 +22,9 @@ Route::get('/evenement/{reference}', [HomeController::class, 'event'])->name('ev
 Route::get('/evenement/{reference}/invitation/{code}', [HomeController::class, 'invitation'])->name('event.invitation');
 Route::post('/evenement/{reference}/invitation/{code}/rsvp', [HomeController::class, 'rsvp'])->name('guest.rsvp');
 
+Route::get('/verifier-invitation', [\App\Http\Controllers\InvitationVerifierController::class, 'form'])->name('invitation.check.form');
+Route::post('/verifier-invitation', [\App\Http\Controllers\InvitationVerifierController::class, 'verify'])->name('invitation.check.verify');
+
 
 Route::get('/event/login', [\App\Http\Controllers\EventLoginController::class, 'showLoginForm'])->name('event.login.form');
 Route::post('/event/login', [\App\Http\Controllers\EventLoginController::class, 'login'])->name('event.login');
