@@ -22,8 +22,8 @@ class InvitationVerifierController extends Controller
             ->first();
 
         if (! $invitation) {
-            return view('verificateur.result', [
-                'error' => 'Code invalide ou non trouvé.',
+            return view('invitation.verify', [
+                'error' => 'Invitation Non Trouvée ou Code mal écris, veuillez reesayer ou contacter l\'organisateur.',
             ]);
         }
 

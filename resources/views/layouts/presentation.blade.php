@@ -55,6 +55,9 @@
 
     <link rel="shortcut icon" href="{{asset('favicon.png')}}" type="image/x-icon">
 
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+
+
 </head>
 
 <body id="body" class="tt-magic-cursor">
@@ -144,7 +147,7 @@
                             </li>
 
                             <li>
-                                <a href="#verifier" class="drop-down">
+                                <a href="{{route('invitation.check.form')}}" class="drop-down">
                                     Vérifier Invitation
                                 </a>
                             </li>
