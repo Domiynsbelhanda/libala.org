@@ -132,7 +132,7 @@
                             </li>
 
                             <li>
-                                <a href="#tarifs" class="drop-down">
+                                <a href="#tarification" class="drop-down">
                                     Tarifs
                                 </a>
                             </li>
@@ -168,11 +168,11 @@
                             </li>
                         </ul>
                         <div class="btn-area d-lg-none d-flex">
-                            <a href="#" class="primary-btn" data-text="Free Consulting"><span>Connexion</span></a>
+                            <a href="{{route('event.login.form')}}" class="primary-btn" data-text="Gerer Votre Mariage"><span>Gerer Votre Mariage</span></a>
                         </div>
                     </div>
                     <div class="nav-right d-flex jsutify-content-end align-items-center">
-                        <a href="#" class="primary-btn d-lg-flex d-none" data-text="Free Consulting"><span>Connexion</span></a>
+                        <a href="{{route('event.login.form')}}" class="primary-btn d-lg-flex d-none" data-text="Manage Your Weeding"><span>Gerer Votre Mariage</span></a>
                         <div class="sidebar-button mobile-menu-btn">
                             <svg class="sidebar-toggle-button" width="25" height="25" viewBox="0 0 18 18"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -198,72 +198,8 @@
 <!-- Home1 Footer Section Start -->
 <footer class="footer-section">
     <div class="container">
-        <div class="footer-menu-wrap">
-            <div class="row gy-5">
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="footer-logo-area">
-                        <a href="index.html"><img src="assets/img/footer-logo.svg" alt=""></a>
-                        <p>Monotonectally synergize granular top visualize strategic infomediaries afters task state of
-                            the art infrastructures.</p>
-                        <ul class="social-list">
-                            <li><a href="https://www.facebook.com/"><i class='bx bxl-facebook'></i></a></li>
-                            <li><a href="https://www.linkedin.com/"><i class='bx bxl-linkedin'></i></a></li>
-                            <li><a href="https://x.com/"><i class="bi bi-twitter-x"></i></a></li>
-                            <li><a href="https://www.instagram.com/"><i class='bx bxl-instagram-alt'></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-4 d-flex justify-content-lg-start justify-content-md-center">
-                    <div class="footer-widget">
-                        <div class="widget-title">
-                            <h5>Quick Links</h5>
-                        </div>
-                        <ul class="widget-list">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="blog-grid.html">Blog</a></li>
-                            <li><a href="service.html">Services</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-5 d-flex justify-content-lg-center justify-content-md-end">
-                    <div class="footer-widget">
-                        <div class="widget-title">
-                            <h5>Usefull link</h5>
-                        </div>
-                        <ul class="widget-list">
-                            <li><a href="#">Company</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="blog-grid.html">Our Blog</a></li>
-                            <li><a href="#">Press media</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-7 d-flex justify-content-lg-end">
-                    <div class="newsletter-area">
-                        <h5>Newsletter</h5>
-                        <p>Subscribe to Privitar's weekly newsletter for the newest updates.</p>
-                        <form>
-                            <div class="form-inner">
-                                <input type="email" placeholder="Enter your email">
-                                <button type="submit">Subscribe</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="footer-btm-area">
-            <p><a href="https://qzency.com/">Qzency</a> @ 2024. All Rights Reserved.</p>
-            <div class="footer-bottom-right">
-                <ul>
-                    <li><a href="#">Privacy & Terms</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
+            <p><a href="https://youne.studio/">Youne Studio.</a> @ 2025. All Rights Reserved.</p>
         </div>
     </div>
 </footer>
