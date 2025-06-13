@@ -25,8 +25,8 @@ class EventResource extends Resource
             ->schema([
                 Forms\Components\Section::make('Informations des mariés')
                     ->schema([
-                        Forms\Components\TextInput::make('bride_name')->label("Nom de la mariée (femme)")->required(),
-                        Forms\Components\TextInput::make('groom_name')->label("Nom du marié (homme)")->required(),
+                        Forms\Components\TextInput::make('groom_name')->label("Prénom du marié (homme)")->required(),
+                        Forms\Components\TextInput::make('bride_name')->label("Prénom de la mariée (femme)")->required(),
                         Forms\Components\DatePicker::make('wedding_date')->label("Date du mariage")->required(),
                         Forms\Components\TextInput::make('max_guests')
                             ->label('Nombre maximal d’invités')
@@ -49,6 +49,41 @@ class EventResource extends Resource
                             ->required(false), // ou ->required() si obligatoire
 
                     ])->columns(3),
+
+
+                Forms\Components\Section::make('Présentation du couple')
+                    ->description("Informations détaillées sur le mari et la femme")
+                    ->schema([
+                        Forms\Components\Group::make([
+                            Forms\Components\TextInput::make('husband_fullname')
+                                ->label("Nom complet du mari"),
+                            Forms\Components\Textarea::make('husband_description')
+                                ->label("Description du mari")
+                                ->rows(4),
+                            Forms\Components\FileUpload::make('husband_image')
+                                ->label("Image du mari")
+                                ->image()
+                                ->directory('couples/husband')
+                                ->visibility('public')
+                                ->imagePreviewHeight('150')
+                                ->maxSize(2048),
+                        ])->columnSpan(1),
+
+                        Forms\Components\Group::make([
+                            Forms\Components\TextInput::make('wife_fullname')
+                                ->label("Nom complet de la femme"),
+                            Forms\Components\Textarea::make('wife_description')
+                                ->label("Description de la femme")
+                                ->rows(4),
+                            Forms\Components\FileUpload::make('wife_image')
+                                ->label("Image de la femme")
+                                ->image()
+                                ->directory('couples/wife')
+                                ->visibility('public')
+                                ->imagePreviewHeight('150')
+                                ->maxSize(2048),
+                        ])->columnSpan(1),
+                    ])->columns(2),
 
                 Forms\Components\Section::make('Mariage civil')
                     ->schema([
@@ -91,6 +126,21 @@ class EventResource extends Resource
                             ->visible(!auth()->guard('event_manager')->check()),
 
                     ])->columns(2),
+
+                Forms\Components\Section::make('Galerie du mariage')
+                    ->description('Vous pouvez uploader jusqu\'à 8 images.')
+                    ->schema([
+                        Forms\Components\FileUpload::make('gallery')
+                            ->label('Galerie (max 8 images)')
+                            ->multiple()
+                            ->reorderable()
+                            ->directory('galleries')
+                            ->image()
+                            ->maxFiles(8)
+                            ->imagePreviewHeight('150')
+                            ->columnSpanFull(),
+                    ])
+                    ->collapsible(),
             ]);
     }
 

@@ -32,7 +32,16 @@ class Event extends Authenticatable
         'manager_contact',
         'password',
         'couple_photo',
-        'max_guests'
+        'max_guests',
+
+        'husband_fullname',
+        'husband_description',
+        'husband_image',
+        'wife_fullname',
+        'wife_description',
+        'wife_image',
+
+        'gallery',
     ];
 
     protected static function boot()
@@ -61,4 +70,9 @@ class Event extends Authenticatable
     {
         return $this->belongsTo(\App\Models\Template::class);
     }
+
+    protected $casts = [
+        'gallery' => 'array',
+    ];
+
 }

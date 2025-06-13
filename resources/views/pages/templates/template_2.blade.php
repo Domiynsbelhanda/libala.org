@@ -128,6 +128,67 @@
     </section>
     <!-- end wpo-wedding-date-s3-->
 
+
+    @if (
+        !empty($event->husband_fullname) &&
+        !empty($event->wife_fullname) &&
+        !empty($event->husband_image) &&
+        !empty($event->wife_image)
+    )
+        <!-- start couple-section -->
+        <section class="wpo-couple-section section-padding pt-2" id="couple">
+            <div class="container">
+                <div class="couple-area clearfix">
+                    <div class="couple-wrap">
+                        <div class="row align-items-center gx-5">
+                            <!-- Mari (Husband) -->
+                            <div class="col col-md-6 col-12">
+                                <div class="couple-item">
+                                    <div class="couple-img">
+                                        <img src="{{ asset('storage/' . $event->husband_image) }}" alt="Mari">
+                                    </div>
+                                    <div class="couple-text">
+                                        <i><img src="{{ asset('assets/images/couple/groom.svg') }}" alt=""></i>
+                                        <h3>{{ $event->husband_fullname }}</h3>
+                                        <p>{{ $event->husband_description }}</p>
+                                        <div class="couple-bg">
+                                            <svg viewBox="0 0 500 433" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 28.0003C0 28.0003 40 -20.2942 78 11.0001C90.075 20.9443 94.3766 37.833 95.1425 54.6979C95.9162 71.7365 117.555 85.4249 131.164 75.1428C133.036 73.7282 135.17 72.6975 137.441 72.11L142.442 70.8167C168.453 64.0898 194.316 82.2112 196.874 108.956L197.393 114.379C200.295 144.721 230.211 164.837 259.405 156.079L263 155C290.305 139.265 324.668 157.485 326.966 188.914L328.735 213.107C329.843 228.267 342.466 240 357.667 240C359.882 240 362.089 239.747 364.246 239.244L376.055 236.494C404.616 229.843 431.332 253.052 428.738 282.263L427.564 295.484C425.743 315.988 443.286 332.954 463.719 330.449C482.999 328.085 500 343.128 500 362.553V433H0V28.0003Z" fill="white" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Femme (Wife) -->
+                            <div class="col col-md-6 col-12">
+                                <div class="couple-item">
+                                    <div class="couple-img">
+                                        <img src="{{ asset('storage/' . $event->wife_image) }}" alt="Femme">
+                                    </div>
+                                    <div class="couple-text">
+                                        <i><img src="{{ asset('assets/images/couple/bride.svg') }}" alt=""></i>
+                                        <h3>{{ $event->wife_fullname }}</h3>
+                                        <p>{{ $event->wife_description }}</p>
+                                        <div class="couple-bg">
+                                            <svg viewBox="0 0 500 433" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M500 28.0003C500 28.0003 460 -20.2942 422 11.0001C409.925 20.9443 405.623 37.833 404.858 54.6979C404.084 71.7365 382.445 85.4249 368.836 75.1428C366.964 73.7282 364.83 72.6975 362.559 72.11L357.558 70.8167C331.547 64.0898 305.684 82.2112 303.126 108.956L302.607 114.379C299.705 144.721 269.789 164.837 240.595 156.079L237 155C209.695 139.265 175.332 157.485 173.034 188.914L171.265 213.107C170.157 228.267 157.534 240 142.333 240C140.118 240 137.911 239.747 135.754 239.244L123.945 236.494C95.3837 229.843 68.6684 253.052 71.2621 282.263L72.436 295.484C74.2567 315.988 56.7136 332.954 36.2814 330.449C17.0009 328.085 0 343.128 0 362.553V433H500V28.0003Z" fill="white" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shape-1"><img src="{{ asset('assets/images/couple/flower1.png') }}" alt=""></div>
+                        <div class="shape-2"><img src="{{ asset('assets/images/couple/flower2.png') }}" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end couple-section -->
+    @endif
+
+
     <!-- start wpo-story-section -->
     <section class="wpo-story-section section-padding pb-0" id="story">
         <div class="container">
@@ -375,32 +436,137 @@
     </section>
     <!-- end wpo-event-section -->
 
-    <!-- end wpo-blog-section -->
-
-    <!-- start of wpo-site-footer-section -->
-    <footer class="wpo-site-footer">
-        <div class="wpo-upper-footer">
-            <div class="container">
-                <div class="row align-items-center">
-
-                    <div class="col col-xl-12  col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="widget wpo-service-link-widget">
-                            <div class="widget-title">
-                                <h3>Contact </h3>
+    @if(!empty($event->gallery) && count($event->gallery) > 0)
+        <!-- start wpo-portfolio-section -->
+        <section class="wpo-portfolio-section section-padding pt-0" id="gallery">
+            <div class="container-fluid">
+                <div class="wpo-section-title">
+                    <h4 class="poort-text poort-in-right">Sweet Memories</h4>
+                    <h2 class="poort-text poort-in-right">Notre Gallerie</h2>
+                </div>
+                <div class="gallery-main-wrap">
+                    <div class="row align-items-center">
+                        {{-- 1ère image --}}
+                        @if(isset($event->gallery[0]))
+                            <div class="col-lg-2 col-md-6 order-lg-1 order-2">
+                                <div class="gallery-side-img wow fadeInLeftSlow" data-wow-duration="1400ms">
+                                    <div class="img-holder">
+                                        <a href="{{ asset('storage/' . $event->gallery[0]) }}" class="fancybox" data-fancybox-group="gall-1">
+                                            <img src="{{ asset('storage/' . $event->gallery[0]) }}" alt class="img img-responsive">
+                                            <div class="hover-content"><i class="ti-plus"></i></div>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="contact-ft">
-                                <p><a href="mailto:reservation@libala.org">reservation@libala.org</a></p>
-                                <p><a href="tel:+243996852377">+243996852377</a></p>
+                        @endif
+
+                        <div class="col-lg-8 order-lg-2 order-3">
+                            <div class="sortable-gallery">
+                                <div class="row portfolio-grids style-1 clearfix">
+                                    {{-- 3 à 8 images dans la grille centrale --}}
+                                    @if(isset($event->gallery[2]))
+                                        <div class="col-lg-4 col-md-6 col-12 grid">
+                                            <div class="img-holder wow fadeInUp" data-wow-duration="1000ms">
+                                                <a href="{{ asset('storage/' . $event->gallery[2]) }}" class="fancybox" data-fancybox-group="gall-1">
+                                                    <img src="{{ asset('storage/' . $event->gallery[2]) }}" alt class="img img-responsive">
+                                                    <div class="hover-content"><i class="ti-plus"></i></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if(isset($event->gallery[3]))
+                                        <div class="col-lg-4 col-md-6 col-12 grid">
+                                            <div class="img-holder wow fadeInUp" data-wow-duration="1200ms">
+                                                <a href="{{ asset('storage/' . $event->gallery[3]) }}" class="fancybox" data-fancybox-group="gall-1">
+                                                    <img src="{{ asset('storage/' . $event->gallery[3]) }}" alt class="img img-responsive">
+                                                    <div class="hover-content"><i class="ti-plus"></i></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if(isset($event->gallery[4]))
+                                        <div class="col-lg-4 col-md-6 col-12 grid">
+                                            <div class="img-holder wow fadeInUp" data-wow-duration="1400ms">
+                                                <a href="{{ asset('storage/' . $event->gallery[4]) }}" class="fancybox" data-fancybox-group="gall-1">
+                                                    <img src="{{ asset('storage/' . $event->gallery[4]) }}" alt class="img img-responsive">
+                                                    <div class="hover-content"><i class="ti-plus"></i></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if(isset($event->gallery[5]))
+                                        <div class="col-lg-4 col-md-6 col-12 grid">
+                                            <div class="img-holder wow fadeInUp" data-wow-duration="1000ms">
+                                                <a href="{{ asset('storage/' . $event->gallery[5]) }}" class="fancybox" data-fancybox-group="gall-1">
+                                                    <img src="{{ asset('storage/' . $event->gallery[5]) }}" alt class="img img-responsive">
+                                                    <div class="hover-content"><i class="ti-plus"></i></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if(isset($event->gallery[6]))
+                                        <div class="col-lg-4 col-md-6 col-12 grid">
+                                            <div class="img-holder wow fadeInUp" data-wow-duration="1200ms">
+                                                <a href="{{ asset('storage/' . $event->gallery[6]) }}" class="fancybox" data-fancybox-group="gall-1">
+                                                    <img src="{{ asset('storage/' . $event->gallery[6]) }}" alt class="img img-responsive">
+                                                    <div class="hover-content"><i class="ti-plus"></i></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if(isset($event->gallery[7]))
+                                        <div class="col-lg-4 col-md-6 col-12 grid">
+                                            <div class="img-holder wow fadeInUp" data-wow-duration="1400ms">
+                                                <a href="{{ asset('storage/' . $event->gallery[7]) }}" class="fancybox" data-fancybox-group="gall-1">
+                                                    <img src="{{ asset('storage/' . $event->gallery[7]) }}" alt class="img img-responsive">
+                                                    <div class="hover-content"><i class="ti-plus"></i></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
+
+                        {{-- 2e image (à droite) --}}
+                        @if(isset($event->gallery[1]))
+                            <div class="col-lg-2 col-md-6 order-lg-3 order-2">
+                                <div class="gallery-side-img wow fadeInRightSlow" data-wow-duration="1400ms">
+                                    <div class="img-holder">
+                                        <a href="{{ asset('storage/' . $event->gallery[1]) }}" class="fancybox" data-fancybox-group="gall-1">
+                                            <img src="{{ asset('storage/' . $event->gallery[1]) }}" alt class="img img-responsive">
+                                            <div class="hover-content"><i class="ti-plus"></i></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
             </div> <!-- end container -->
-        </div>
+        </section>
+        <!-- end wpo-portfolio-section -->
+    @endif
+
+
+
+    <!-- start of wpo-site-footer-section -->
+    <footer class="wpo-site-footer">
         <div class="wpo-lower-footer">
             <div class="container">
                 <div class="row">
                     <div class="col col-xs-12">
+                        <p>
+                            Contact :
+                            <a href="tel:+243818045132">+243818045132</a>
+                        </p>
+
+                        <p>
+                            Email :
+                            <a href="mailto:reservation@libala.org">reservation@libala.org</a>
+                        </p>
+
                         <p class="copyright"> &copy; Copyright 2025 | <a href="{{url('www.youne.studio')}}">Youne Studio.</a> | All right
                             reserved.</p>
                     </div>

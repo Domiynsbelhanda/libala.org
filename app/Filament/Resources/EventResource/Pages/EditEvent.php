@@ -33,7 +33,7 @@ class EditEvent extends EditRecord
                 ->tooltip('Voir la liste des invités'),
 
             Action::make('Par Table')
-                ->label('📋 Invités par table')
+                ->label('📋 Invitations')
                 ->url(fn ($record) => static::getResource()::getUrl('guests-by-table', ['record' => $record]))
                 ->color('warning')
                 ->tooltip('Voir la répartition des invités par table'),
