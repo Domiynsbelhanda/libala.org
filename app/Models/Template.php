@@ -20,4 +20,9 @@ class Template extends Model
             $model->code = (string) Str::uuid();
         });
     }
+
+    public function events()
+    {
+        return $this->hasMany(\App\Models\Event::class);
+    }
 }

@@ -33,14 +33,14 @@
                             </div>
                             <div class="portfolio-content-wrap">
                                 <div class="portfolio-content">
-                                    <a href="{{ route('template.detail', ['code' => $template->code]) }}" class="details-btn">
+                                    <a target="_blank" href="{{ route('template.detail', ['code' => $template->code]) }}" class="details-btn">
                                         <svg width="17" height="17" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M14.3386 4.55228L2.86315 16.0277L0.977539 14.1421L12.453 2.66667H2.33863V0H17.0053V14.6667H14.3386V4.55228Z"/>
                                         </svg>
                                     </a>
                                     <span>Modèle d'invitation</span>
                                     <h4>
-                                        <a href="{{ route('template.detail', ['code' => $template->code]) }}">
+                                        <a target="_blank" href="{{ route('template.detail', ['code' => $template->code]) }}">
                                             {{ $template->name }}
                                         </a>
                                     </h4>

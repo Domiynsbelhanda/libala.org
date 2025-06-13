@@ -42,7 +42,13 @@ class EventResource extends Resource
                             ->imagePreviewHeight('150')
                             ->maxSize(2048), // taille en Ko
 
-                ])->columns(3),
+                        Forms\Components\Select::make('template_id')
+                            ->label("Modèle de présentation")
+                            ->relationship('template', 'name') // suppose que la colonne est 'name'
+                            ->placeholder('Sélectionner un modèle')
+                            ->required(false), // ou ->required() si obligatoire
+
+                    ])->columns(3),
 
                 Forms\Components\Section::make('Mariage civil')
                     ->schema([

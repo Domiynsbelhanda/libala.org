@@ -38,6 +38,14 @@ class EditEvent extends EditRecord
                 ->color('warning')
                 ->tooltip('Voir la répartition des invités par table'),
 
+            Actions\Action::make('save')
+                ->label('Enregistrer')
+                ->color('primary')
+                ->action('save')
+                ->icon('heroicon-o-check')
+                ->requiresConfirmation(false)
+                ->visible(fn () => true),
+
             Actions\DeleteAction::make()
                 ->visible(!auth()->guard('event_manager')->check()),
         ];

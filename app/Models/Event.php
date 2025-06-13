@@ -56,4 +56,9 @@ class Event extends Authenticatable
     {
         return $this->hasMany(\App\Models\Guest::class);
     }
+
+    public function template()
+    {
+        return $this->belongsTo(\App\Models\Template::class);
+    }
 }
