@@ -1,5 +1,7 @@
 @extends('layouts.presentation')
 
+@section('title', "Validité de l'invitation")
+
 @section('content')
 
     <!-- Home1 About Section Start -->

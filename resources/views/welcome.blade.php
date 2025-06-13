@@ -1,10 +1,11 @@
 @extends('layouts.presentation')
 
+@section('title', "Accueil")
 
 @section('content')
 
     <!-- Home1 Banner Section Start -->
-    <div class="home1-banner-section">
+    <div class="home1-banner-section" id="accueil">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-6">

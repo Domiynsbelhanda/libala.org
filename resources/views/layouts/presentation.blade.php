@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>Bienvenue sur Libala.org</title>
+    <title>@yield('title') | Libala.org</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
@@ -123,19 +123,19 @@
                         </div>
                         <ul class="menu-list">
                             <li>
-                                <a href="#accueil" class="drop-down">
+                                <a href="{{route('home')}}#accueil" class="drop-down">
                                     Accueil
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#fonctionnalite" class="drop-down">
+                                <a href="{{route('home')}}#fonctionnalite" class="drop-down">
                                     Fonctionnalités
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#tarification" class="drop-down">
+                                <a href="{{route('home')}}#tarification" class="drop-down">
                                     Tarifs
                                 </a>
                             </li>

@@ -1,5 +1,7 @@
 @extends('layouts.presentation')
 
+@section('title', "Verification d'invitation")
+
 @section('content')
 
     <!-- Home2 Contact Section Start -->
@@ -9,7 +11,7 @@
                 <div class="col-lg-6 wow animate fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
                     <div class="contact-form">
                         <div class="form-title">
-                            <h4>Verifiez l'Information</h4>
+                            <h4>Verifiez l'Ivitation</h4>
 
                             @if(session('error'))
                                 <p style="color:red;">{{ session('error') }}</p>
