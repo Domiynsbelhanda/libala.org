@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\GuestTable;
+use App\Models\Template;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -49,6 +50,26 @@ class HomeController extends Controller
         ]);
 
         return back()->with('success', 'Votre confirmation a été enregistrée. Merci pour votre réponse !');
+    }
+
+    public function template()
+    {
+        $templates = Template::latest()->get();
+        return view('pages.templates.template', compact('templates'));
+    }
+
+
+    public function template_detail($code)
+    {
+        $event = Event::where('reference', "CQ6QUMA64F")->firstOrFail();
+        $invitation = GuestTable::where('code', "8842AF1F33EB")->firstOrFail();
+        $invitationUrl = route('event.invitation', ['reference' => "CQ6QUMA64F", 'code' => "8842AF1F33EB"]);
+
+        return view('pages.templates.template_2',
+            ['event'=>$event, 'invitation'=>$invitation,
+                'qrcode' => QrCode::size(200)->generate($invitationUrl),
+            ]
+        );
     }
 
 }

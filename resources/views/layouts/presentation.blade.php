@@ -141,7 +141,7 @@
                             </li>
 
                             <li>
-                                <a href="#models" class="drop-down">
+                                <a href="{{route('template')}}" class="drop-down">
                                     Modèles
                                 </a>
                             </li>

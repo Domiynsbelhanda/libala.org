@@ -30,3 +30,5 @@ Route::get('/event/login', [\App\Http\Controllers\EventLoginController::class, '
 Route::post('/event/login', [\App\Http\Controllers\EventLoginController::class, 'login'])->name('event.login');
 Route::post('/event/logout', [\App\Http\Controllers\EventLoginController::class, 'logout'])->name('event.logout');
 
+Route::get('/template', [\App\Http\Controllers\HomeController::class, 'template'])->name('template');
+Route::get('/{code}/template', [\App\Http\Controllers\HomeController::class, 'template_detail'])->name('template.detail');

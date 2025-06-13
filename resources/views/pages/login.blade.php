@@ -2,8 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Connexion Gestionnaire</title>
+    <title>Connexion Gestionnaire | Libala.org</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="{{ asset('favicon.png') }}" type="image/gif" sizes="20x20">
+
+    <link rel="shortcut icon" href="{{asset('favicon.png')}}" type="image/x-icon">
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -63,6 +67,11 @@
     <!-- Formulaire -->
     <div class="col-md-6 d-flex align-items-center justify-content-center">
         <div class="form-wrapper w-100 px-4" style="max-width: 400px">
+
+            <a href="{{route('home')}}">
+                <img src="{{asset('logo.svg')}}" alt="logo libala.org" style="margin-bottom: 60px!important;">
+            </a>
+
             <h2 class="mb-4 text-center">Connexion au mariage</h2>
 
             @if(session('error'))
