@@ -43,7 +43,6 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('twitter_title', 'Wedding Manager – Invitations digitales')">
     <meta name="twitter:description" content="@yield('twitter_description', 'Invitations de mariage digitales au Congo.')">
     <meta name="twitter:image" content="@yield('twitter_image', asset('images/wedding-cover.jpg'))">
 </head>

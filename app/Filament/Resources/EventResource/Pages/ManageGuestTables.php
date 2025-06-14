@@ -152,11 +152,12 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
                         $event = $record->event;
 
                         // On génère le message WhatsApp
-                        $message = "🎉 Invitation au mariage de {$event->bride_name} & {$event->groom_name}\n\n";
-                        $message .= "📅 Date: " . \Carbon\Carbon::parse($event->wedding_date)->translatedFormat('l d F Y') . "\n";
-                        $message .= "🪑 Table: {$record->table->name}\n";
-                        $message .= "🎟️ Code: {$record->code}\n\n";
-                        $message .= "👉 Cliquez ici pour voir votre invitation : " . route('event.invitation', [
+                        $message = "Invitation au mariage de {$event->bride_name} & {$event->groom_name}\n\n";
+                        $message .= "- Invité : {$guest->name}\n\n";
+                        $message .= "- Date: " . \Carbon\Carbon::parse($event->wedding_date)->translatedFormat('l d F Y') . "\n";
+                        $message .= "- Table: {$record->table->name}\n";
+                        $message .= "- Code: {$record->code}\n\n";
+                        $message .= "Cliquez ici pour voir votre invitation : " . route('event.invitation', [
                                 'reference' => $event->reference,
                                 'code' => $record->code,
                             ]);
