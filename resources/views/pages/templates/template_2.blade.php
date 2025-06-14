@@ -250,7 +250,7 @@
 {{--                                        <img src="{{ asset('images/eglise.jpg') }}" alt="">--}}
 {{--                                    </div>--}}
 {{--                                </div>--}}
-                                <div class="col col-lg-6 col-12">
+                                <div class="col col-lg-12 col-12">
                                     <div class="wpo-story-content">
                                         <div class="pin">
                                             <img src="{{ asset('template2/images/story/pin.svg') }}" alt="">
@@ -282,7 +282,7 @@
 {{--                                        <img src="{{ asset('images/soiree.jpg') }}" alt="">--}}
 {{--                                    </div>--}}
 {{--                                </div>--}}
-                                <div class="col col-lg-6 col-12">
+                                <div class="col col-lg-12 col-12">
                                     <div class="wpo-story-content">
                                         <div class="pin">
                                             <img src="{{ asset('template2/images/story/pin.svg') }}" alt="">
