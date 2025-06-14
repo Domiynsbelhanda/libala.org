@@ -199,9 +199,6 @@
     <!-- start wpo-story-section -->
     <section class="wpo-story-section section-padding pb-0" id="story">
         <div class="container">
-            <div class="wpo-section-title">
-                <h4 class="poort-text poort-in-right">Notre Programme</h4>
-            </div>
 
             @php
                 $eventCount = collect([
@@ -211,15 +208,19 @@
                 ])->filter()->count();
             @endphp
 
+            <div class="wpo-section-title">
+                <h4 class="poort-text poort-in-right">Notre Programme</h4>
+            </div>
+
             <div class="wpo-story-wrap">
                 @if($event->civil_date && $event->civil_time && $event->civil_commune)
                     <div class="wpo-story-item">
                         <div class="row">
-                            <div class="col col-lg-6 col-12">
-                                <div class="wpo-story-img">
-                                    <img src="{{ asset('images/civile.jpg') }}" alt="">
-                                </div>
-                            </div>
+{{--                            <div class="col col-lg-6 col-12">--}}
+{{--                                <div class="wpo-story-img">--}}
+{{--                                    <img src="{{ asset('images/civile.jpg') }}" alt="">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="col col-lg-6 col-12">
                                 <div class="wpo-story-content">
                                     <div class="pin">
@@ -244,11 +245,11 @@
                 @if($event->church_name && $event->church_date && $event->church_time)
                     <div class="wpo-story-item">
                             <div class="row">
-                                <div class="col col-lg-6 col-12">
-                                    <div class="wpo-story-img">
-                                        <img src="{{ asset('images/eglise.jpg') }}" alt="">
-                                    </div>
-                                </div>
+{{--                                <div class="col col-lg-6 col-12">--}}
+{{--                                    <div class="wpo-story-img">--}}
+{{--                                        <img src="{{ asset('images/eglise.jpg') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="col col-lg-6 col-12">
                                     <div class="wpo-story-content">
                                         <div class="pin">
@@ -276,11 +277,11 @@
                 @if($event->reception_date && $event->reception_time && $event->reception_hall)
                     <div class="wpo-story-item">
                             <div class="row">
-                                <div class="col col-lg-6 col-12">
-                                    <div class="wpo-story-img">
-                                        <img src="{{ asset('images/soiree.jpg') }}" alt="">
-                                    </div>
-                                </div>
+{{--                                <div class="col col-lg-6 col-12">--}}
+{{--                                    <div class="wpo-story-img">--}}
+{{--                                        <img src="{{ asset('images/soiree.jpg') }}" alt="">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <div class="col col-lg-6 col-12">
                                     <div class="wpo-story-content">
                                         <div class="pin">
