@@ -117,23 +117,40 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
                     ->orderBy('table_id')
             )
             ->columns([
-                Tables\Columns\TextColumn::make('code')->label('Code de réservation'),
-                Tables\Columns\TextColumn::make('table.name')->label('Table'),
-                Tables\Columns\TextColumn::make('guest.name')->label('Invité'),
+                Tables\Columns\TextColumn::make('code')->label('Code de réservation')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('table.name')->label('Table')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('guest.name')->label('Invité')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('arrival_time')
                     ->label('Heure d\'arrivée')
-                    ->time('H:i'),
+                    ->time('H:i')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\IconColumn::make('is_attending')
                     ->label('Présence')
+                    ->searchable()
+                    ->sortable()
                     ->boolean(),
 
                 Tables\Columns\TextColumn::make('number_of_people')
+                    ->searchable()
+                    ->sortable()
                     ->label('Nb personnes'),
 
                 Tables\Columns\TextColumn::make('additional_info')
                     ->label('Infos')
-                    ->limit(30),
-                Tables\Columns\TextColumn::make('guest.phone')->label('Téléphone'),
+                    ->limit(30)
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('guest.phone')->label('Téléphone')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('table_id')
