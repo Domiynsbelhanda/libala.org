@@ -162,8 +162,13 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
                                 'code' => $record->code,
                             ]);
 
-                        $phone = preg_replace('/[^0-9]/', '', $guest->phone); // nettoie le numéro
-                        $phone = ltrim($phone, '0'); // retire le 0 initial si nécessaire
+                        $phone = preg_replace('/[^0-9]/', '', $guest->phone);
+                        $phone = ltrim($phone, '0');
+
+                        if (empty($phone)) {
+                            $phone = preg_replace('/[^0-9]/', '', $event->manager_contact);
+                            $phone = ltrim($phone, '0');
+                        }
 
                         return 'https://wa.me/' . $phone . '?text=' . urlencode($message);
                     })
