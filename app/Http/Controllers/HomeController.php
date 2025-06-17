@@ -66,8 +66,9 @@ class HomeController extends Controller
         $event = Event::where('reference', "CQ6QUMA64F")->firstOrFail();
         $invitation = GuestTable::where('code', "8842AF1F33EB")->firstOrFail();
         $invitationUrl = route('event.invitation', ['reference' => "CQ6QUMA64F", 'code' => "8842AF1F33EB"]);
+        $template = Template::where('code', $code)->firstOrFail();
 
-        return view('pages.templates.template_2',
+        return view($template->blade_path,
             ['event'=>$event, 'invitation'=>$invitation,
                 'qrcode' => QrCode::size(200)->generate($invitationUrl),
             ]

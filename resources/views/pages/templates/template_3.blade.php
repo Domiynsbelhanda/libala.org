@@ -143,71 +143,90 @@
         !empty($event->wife_image)
     )
         <!-- start couple-section -->
-        <section class="wpo-couple-section section-padding pt-2" id="couple">
-            <div class="container">
+        <section class="wpo-couple-section-s2 section-padding pt-0" id="couple">
+            <div class="container-fluid">
                 <div class="couple-area clearfix">
                     <div class="couple-wrap">
-                        <div class="row align-items-center gx-5">
-                            <!-- Mari (Husband) -->
-                            <div class="col col-md-6 col-12">
+                        <div class="row gx-5">
+                            <!-- Femme -->
+                            <div class="col col-lg-5 col-12">
                                 <div class="couple-item">
                                     <div class="couple-img">
-                                        <img src="{{ asset('storage/' . $event->husband_image) }}" alt="Mari">
+                                        <img src="{{ asset('storage/' . $event->wife_image) }}" alt="{{ $event->wife_fullname }}">
                                     </div>
                                     <div class="couple-text">
-                                        <i><img src="{{ asset('assets/images/couple/groom.svg') }}" alt=""></i>
-                                        <h3>{{ $event->husband_fullname }}</h3>
-                                        <p>{{ $event->husband_description }}</p>
-                                        <div class="couple-bg">
-                                            <svg viewBox="0 0 500 433" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0 28.0003C0 28.0003 40 -20.2942 78 11.0001C90.075 20.9443 94.3766 37.833 95.1425 54.6979C95.9162 71.7365 117.555 85.4249 131.164 75.1428C133.036 73.7282 135.17 72.6975 137.441 72.11L142.442 70.8167C168.453 64.0898 194.316 82.2112 196.874 108.956L197.393 114.379C200.295 144.721 230.211 164.837 259.405 156.079L263 155C290.305 139.265 324.668 157.485 326.966 188.914L328.735 213.107C329.843 228.267 342.466 240 357.667 240C359.882 240 362.089 239.747 364.246 239.244L376.055 236.494C404.616 229.843 431.332 253.052 428.738 282.263L427.564 295.484C425.743 315.988 443.286 332.954 463.719 330.449C482.999 328.085 500 343.128 500 362.553V433H0V28.0003Z" fill="white" />
-                                            </svg>
+                                        <div class="couple-text-inner">
+                                            <i><img src="{{ asset('assets/images/couple/bride2.svg') }}" alt="Bride Icon"></i>
+                                            <h3>{{ $event->wife_fullname }}</h3>
+                                            <p>{{ $event->wife_description }}</p>
+                                            <div class="social">
+                                                <ul>
+                                                    @if($event->wife_facebook)
+                                                        <li><a href="{{ $event->wife_facebook }}"><i class="ti-facebook"></i></a></li>
+                                                    @endif
+                                                    @if($event->wife_twitter)
+                                                        <li><a href="{{ $event->wife_twitter }}"><i class="ti-twitter-alt"></i></a></li>
+                                                    @endif
+                                                    @if($event->wife_instagram)
+                                                        <li><a href="{{ $event->wife_instagram }}"><i class="ti-instagram"></i></a></li>
+                                                    @endif
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Femme (Wife) -->
-                            <div class="col col-md-6 col-12">
+                            <!-- Cœur au centre -->
+                            <div class="col-lg-2">
+                                <div class="love-shape"><img src="{{ asset('assets/images/couple/heart-shape.png') }}" alt="Heart Shape"></div>
+                            </div>
+
+                            <!-- Mari -->
+                            <div class="col col-lg-5 col-12">
                                 <div class="couple-item">
                                     <div class="couple-img">
-                                        <img src="{{ asset('storage/' . $event->wife_image) }}" alt="Femme">
+                                        <img src="{{ asset('storage/' . $event->husband_image) }}" alt="{{ $event->husband_fullname }}">
                                     </div>
                                     <div class="couple-text">
-                                        <i><img src="{{ asset('assets/images/couple/bride.svg') }}" alt=""></i>
-                                        <h3>{{ $event->wife_fullname }}</h3>
-                                        <p>{{ $event->wife_description }}</p>
-                                        <div class="couple-bg">
-                                            <svg viewBox="0 0 500 433" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M500 28.0003C500 28.0003 460 -20.2942 422 11.0001C409.925 20.9443 405.623 37.833 404.858 54.6979C404.084 71.7365 382.445 85.4249 368.836 75.1428C366.964 73.7282 364.83 72.6975 362.559 72.11L357.558 70.8167C331.547 64.0898 305.684 82.2112 303.126 108.956L302.607 114.379C299.705 144.721 269.789 164.837 240.595 156.079L237 155C209.695 139.265 175.332 157.485 173.034 188.914L171.265 213.107C170.157 228.267 157.534 240 142.333 240C140.118 240 137.911 239.747 135.754 239.244L123.945 236.494C95.3837 229.843 68.6684 253.052 71.2621 282.263L72.436 295.484C74.2567 315.988 56.7136 332.954 36.2814 330.449C17.0009 328.085 0 343.128 0 362.553V433H500V28.0003Z" fill="white" />
-                                            </svg>
+                                        <div class="couple-text-inner">
+                                            <i><img src="{{ asset('assets/images/couple/groom2.svg') }}" alt="Groom Icon"></i>
+                                            <h3>{{ $event->husband_fullname }}</h3>
+                                            <p>{{ $event->husband_description }}</p>
+                                            <div class="social">
+                                                <ul>
+                                                    @if($event->husband_facebook)
+                                                        <li><a href="{{ $event->husband_facebook }}"><i class="ti-facebook"></i></a></li>
+                                                    @endif
+                                                    @if($event->husband_twitter)
+                                                        <li><a href="{{ $event->husband_twitter }}"><i class="ti-twitter-alt"></i></a></li>
+                                                    @endif
+                                                    @if($event->husband_instagram)
+                                                        <li><a href="{{ $event->husband_instagram }}"><i class="ti-instagram"></i></a></li>
+                                                    @endif
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="shape-1"><img src="{{ asset('assets/images/couple/flower1.png') }}" alt=""></div>
-                        <div class="shape-2"><img src="{{ asset('assets/images/couple/flower2.png') }}" alt=""></div>
+                        </div> <!-- end row -->
                     </div>
                 </div>
+            </div> <!-- end container-fluid -->
+
+            <div class="bottom-text marquee">
+                <h2>Nous vous souhaitons la bienvenue à notre cérémonie de mariage..</h2>
             </div>
         </section>
         <!-- end couple-section -->
+
     @endif
 
 
     <!-- start wpo-story-section -->
-    <section class="wpo-story-section section-padding pb-0" id="story">
+    <section class="wpo-story-section-s2 section-padding pb-0" id="story">
         <div class="container">
-
-            @php
-                $eventCount = collect([
-                    $event->civil_date || $event->civil_time || $event->civil_commune,
-                    $event->church_name || $event->church_date || $event->church_time,
-                    $event->reception_date || $event->reception_time || $event->reception_hall,
-                ])->filter()->count();
-            @endphp
-
             <div class="wpo-section-title">
                 <h4 class="poort-text poort-in-right">Notre Programme</h4>
             </div>
@@ -216,114 +235,100 @@
                 @if($event->civil_date && $event->civil_time && $event->civil_commune)
                     <div class="wpo-story-item">
                         <div class="row">
-{{--                            <div class="col col-lg-6 col-12">--}}
-{{--                                <div class="wpo-story-img">--}}
-{{--                                    <img src="{{ asset('images/civile.jpg') }}" alt="">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                            {{-- <div class="col col-lg-6 col-12">
+                                <div class="wpo-story-img">
+                                    <img src="{{ asset('images/civile.jpg') }}" alt="Image Mariage Civil">
+                                </div>
+                            </div> --}}
                             <div class="col-lg-12 col-12">
                                 <div class="wpo-story-content">
-                                    <div class="pin">
-                                        <img src="{{ asset('template2/images/story/pin.svg') }}" alt="">
-                                    </div>
-                                    <i><img src="{{ asset('template2/images/story/f-shape-1.png') }}" alt=""></i>
-                                    <h2>Mariage Civile</h2>
-                                    <span>{{ mb_strtoupper(\Carbon\Carbon::parse($event->civil_date)->translatedFormat('l d F Y')) ?? '' }}</span>
+                                    <i><img src="{{ asset('assets/images/story/f-shape-1.png') }}" alt=""></i>
+                                    <h2>Mariage Civil</h2>
+                                    <span>{{ mb_strtoupper(\Carbon\Carbon::parse($event->civil_date)->translatedFormat('l d F Y')) }}</span>
                                     <p>
-                                        <i class="fa-solid fa-clock"></i> {{ $event->civil_time ? \Carbon\Carbon::parse($event->civil_time)->format('H:i') : '' }}
+                                        <i class="fa-solid fa-clock"></i> {{ \Carbon\Carbon::parse($event->civil_time)->format('H:i') }}
                                         <br>
                                         <li>Commune : {{ $event->civil_commune }}</li>
                                     </p>
-                                    <i><img src="{{ asset('template2/images/story/f-shape-2.png') }}" alt=""></i>
+                                    <i><img src="{{ asset('assets/images/story/f-shape-2.png') }}" alt=""></i>
+                                    <div class="top-shape"><img src="{{ asset('assets/images/story/tassel.png') }}" alt=""></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endif
 
-
                 @if($event->church_name && $event->church_date && $event->church_time)
                     <div class="wpo-story-item">
-                            <div class="row">
-{{--                                <div class="col col-lg-6 col-12">--}}
-{{--                                    <div class="wpo-story-img">--}}
-{{--                                        <img src="{{ asset('images/eglise.jpg') }}" alt="">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-                                <div class="col col-lg-12 col-12">
-                                    <div class="wpo-story-content">
-                                        <div class="pin">
-                                            <img src="{{ asset('template2/images/story/pin.svg') }}" alt="">
-                                        </div>
-                                        <i><img src="{{ asset('template2/images/story/f-shape-1.png') }}" alt=""></i>
-                                        <h2>Mariage Religieux</h2>
-                                        <span>
-                                            {{ mb_strtoupper(\Carbon\Carbon::parse($event->church_date)->translatedFormat('l d F Y')) ?? '' }}
-                                        </span>
-                                        <p>
-                                            {{ $event->church_time ? \Carbon\Carbon::parse($event->church_time)->format('H:i') : '' }}
-                                            <br>
-                                            {{ $event->church_name }}
-                                            <br>
-                                            {{ $event->church_address }}
-                                        </p>
-                                        <i><img src="{{ asset('template2/images/story/f-shape-2.png') }}" alt=""></i>
-                                    </div>
+                        <div class="row">
+                            {{-- <div class="col col-lg-6 col-12">
+                                <div class="wpo-story-img">
+                                    <img src="{{ asset('images/eglise.jpg') }}" alt="Image Mariage Religieux">
+                                </div>
+                            </div> --}}
+                            <div class="col col-lg-12 col-12">
+                                <div class="wpo-story-content">
+                                    <i><img src="{{ asset('assets/images/story/f-shape-1.png') }}" alt=""></i>
+                                    <h2>Mariage Religieux</h2>
+                                    <span>{{ mb_strtoupper(\Carbon\Carbon::parse($event->church_date)->translatedFormat('l d F Y')) }}</span>
+                                    <p>
+                                        {{ \Carbon\Carbon::parse($event->church_time)->format('H:i') }}
+                                        <br>
+                                        {{ $event->church_name }}
+                                        <br>
+                                        {{ $event->church_address }}
+                                    </p>
+                                    <i><img src="{{ asset('assets/images/story/f-shape-2.png') }}" alt=""></i>
+                                    <div class="top-shape"><img src="{{ asset('assets/images/story/tassel.png') }}" alt=""></div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 @endif
 
                 @if($event->reception_date && $event->reception_time && $event->reception_hall)
                     <div class="wpo-story-item">
-                            <div class="row">
-{{--                                <div class="col col-lg-6 col-12">--}}
-{{--                                    <div class="wpo-story-img">--}}
-{{--                                        <img src="{{ asset('images/soiree.jpg') }}" alt="">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-                                <div class="col col-lg-12 col-12">
-                                    <div class="wpo-story-content">
-                                        <div class="pin">
-                                            <img src="{{ asset('template2/images/story/pin.svg') }}" alt="">
-                                        </div>
-                                        <i><img src="{{ asset('template2/images/story/f-shape-1.png') }}" alt=""></i>
-                                        <h2>Soirée</h2>
-                                        <span>
-                                            {{ mb_strtoupper(\Carbon\Carbon::parse($event->reception_date)->translatedFormat('l d F Y')) ?? '' }}
-                                        </span>
-                                        <p>
-                                            {{ $event->reception_time ? \Carbon\Carbon::parse($event->reception_time)->format('H:i') : '' }}
-
-                                            <br>
-
-                                            {{ $event->reception_hall }}
-
-                                            <br>
-
-                                            {{ $event->reception_address }}
-                                        </p>
-                                        <i><img src="{{ asset('template2/images/story/f-shape-2.png') }}" alt=""></i>
-                                    </div>
+                        <div class="row">
+                            {{-- <div class="col col-lg-6 col-12">
+                                <div class="wpo-story-img">
+                                    <img src="{{ asset('images/soiree.jpg') }}" alt="Image Réception">
+                                </div>
+                            </div> --}}
+                            <div class="col col-lg-12 col-12">
+                                <div class="wpo-story-content">
+                                    <i><img src="{{ asset('assets/images/story/f-shape-1.png') }}" alt=""></i>
+                                    <h2>Soirée</h2>
+                                    <span>{{ mb_strtoupper(\Carbon\Carbon::parse($event->reception_date)->translatedFormat('l d F Y')) }}</span>
+                                    <p>
+                                        {{ \Carbon\Carbon::parse($event->reception_time)->format('H:i') }}
+                                        <br>
+                                        {{ $event->reception_hall }}
+                                        <br>
+                                        {{ $event->reception_address }}
+                                    </p>
+                                    <i><img src="{{ asset('assets/images/story/f-shape-2.png') }}" alt=""></i>
+                                    <div class="top-shape"><img src="{{ asset('assets/images/story/tassel.png') }}" alt=""></div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 @endif
-
             </div>
         </div> <!-- end container -->
+
         <div class="flower-shape-1">
             <div class="flower-sticky">
-                <img src="{{ asset('template2/images/story/shape1.png') }}" alt="">
+                <img src="{{ asset('assets/images/story/shape3.png') }}" alt="">
             </div>
         </div>
         <div class="flower-shape-2">
             <div class="flower-sticky">
-                <img src="{{ asset('template2/images/story/shape2.png') }}" alt="">
+                <img src="{{ asset('assets/images/story/shape4.png') }}" alt="">
             </div>
         </div>
     </section>
     <!-- end story-section -->
+
 
 
     <!-- start of wpo-contact-section -->

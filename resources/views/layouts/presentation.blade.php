@@ -57,6 +57,14 @@
 
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif!important;
+        }
+    </style>
+
 
 </head>
 

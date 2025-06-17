@@ -1,63 +1,63 @@
 /*===========================
 Project Name: Bizify - Business Consulting HTML Template
-Author: Qzency --> (https://qzency.com/) 
+Author: Qzency --> (https://qzency.com/)
 Version: 1.0
 
-01. COMMON CSS 
-02. Header CSS 
-03. Home1 Banner Section  
+01. COMMON CSS
+02. Header CSS
+03. Home1 Banner Section
 04. Home1 About Section
 05. Home1 Service Section
 06. Home1 Why Choose Us Section
 07. Home1 Why Choose Us Section
-08. Home1 Portfolio Section 
-09. Home1 Team Section 
-10. Home1 Video Section 
-11. Home1 Pricing Plan Section 
-12. Home1 Pricing Plan Section 
-13. Home1 Faq Section 
+08. Home1 Portfolio Section
+09. Home1 Team Section
+10. Home1 Video Section
+11. Home1 Pricing Plan Section
+12. Home1 Pricing Plan Section
+13. Home1 Faq Section
 14. Home1 Blog Section
 15. Footer Section
 16. Home2 Banner Section
-17. Home2 Service Section 
+17. Home2 Service Section
 18. Home2 About Section
 19. Home2 Process Section
-20. Home2 Newsletter Section 
+20. Home2 Newsletter Section
 21. Home2 Team Section
 22. Home2 Testimonial Section
-23. Home2 Faq Section 
+23. Home2 Faq Section
 24. Home2 Counter Section
-25. Home2 Contact Section 
-26. Home2 Blog Section 
-27. Home3 Banner Section 
+25. Home2 Contact Section
+26. Home2 Blog Section
+27. Home3 Banner Section
 28. Home3 Logo Section
 29. Home3 Service Section
 30. Home3 About Section
 31. Home3 Portfolio Section
 32. Home3 Pricing Plan Section
 33. Home3 Testimonial Section
-34. Home3 Blog Section 
-35. Home3 Project Banner Section 
+34. Home3 Blog Section
+35. Home3 Project Banner Section
 36. Breadcrumb Section
 37. Faq Contact Section
 38. Blog Grid Page
-39. Blog Standard Page 
+39. Blog Standard Page
 40. Blog Details Page
-41. Error Page 
-42. Contact Page 
+41. Error Page
+42. Contact Page
 43. Team Details Page
 44. Portfolio Details Page
-45. Service Details Page 
+45. Service Details Page
 
 
 
 /*===========================
-  01.COMMON CSS 
+  01.COMMON CSS
 ===========================*/
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Unbounded:wght@200..900&amp;display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200..800&amp;family=Unbounded:wght@200..900&amp;display=swap");
 :root {
-  --font-unbounded: "Unbounded", sans-serif;
-  --font-manrope: "Manrope", sans-serif;
+  --font-unbounded: "Montserrat", sans-serif;
+  --font-manrope: "Montserrat", sans-serif;
   --primary-color: #84A17D;
   --primary-color-opc: 132, 161, 125;
   --primary-color2: #172426;
@@ -1043,7 +1043,7 @@ body.tt-magic-cursor #magic-cursor {
 }
 
 /*=====================================
- 02. Header CSS 
+ 02. Header CSS
 ========================================*/
 @keyframes fade-down {
   0% {
@@ -2300,7 +2300,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 03. Home1 Banner Section 
+ 03. Home1 Banner Section
 ========================================*/
 .home1-banner-section {
   background-image: url(../img/home1/home1-banner-bg.png), radial-gradient(55.89% 91.39% at 100% 96.1%, #153C3C 0%, #172426 100%);
@@ -2576,7 +2576,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 04. Home1 About Section 
+ 04. Home1 About Section
 ========================================*/
 .home1-about-section .about-img {
   padding-left: 50px;
@@ -2722,7 +2722,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 05. Home1 Service Section 
+ 05. Home1 Service Section
 ========================================*/
 .home1-service-section {
   padding: 120px 0;
@@ -2937,7 +2937,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 06. Home1 Why Choose Us Section 
+ 06. Home1 Why Choose Us Section
 ========================================*/
 @media (min-width: 992px) and (max-width: 1199px) {
   .home1-why-choose-us-section .why-choose-us-content .section-title h2 {
@@ -3080,7 +3080,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 07. Home1 Why Choose Us Section 
+ 07. Home1 Why Choose Us Section
 ========================================*/
 .logo-section .logo-wrap .marquee {
   display: flex;
@@ -3175,7 +3175,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 08. Home1 Portfolio Section 
+ 08. Home1 Portfolio Section
 ========================================*/
 .home1-portfolio-section {
   background-color: #F4F5F6;
@@ -3356,7 +3356,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 09. Home1 Team Section 
+ 09. Home1 Team Section
 ========================================*/
 .team-card {
   padding: 18px;
@@ -3514,7 +3514,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 10. Home1 Video Section 
+ 10. Home1 Video Section
 ========================================*/
 .home1-video-section {
   background-image: url(../img/home1/home1-video-bg.jpg);
@@ -3587,7 +3587,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 11. Home1 Pricing Plan Section 
+ 11. Home1 Pricing Plan Section
 ========================================*/
 .pricing-plan-card {
   padding: 50px 35px;
@@ -3868,7 +3868,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 12. Home1 Pricing Plan Section 
+ 12. Home1 Pricing Plan Section
 ========================================*/
 .home1-testimonial-section {
   padding: 130px 0 245px;
@@ -4032,7 +4032,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 13. Home1 Faq Section 
+ 13. Home1 Faq Section
 ========================================*/
 .home1-faq-section .faq-wrapper {
   padding: 40px;
@@ -4255,7 +4255,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 14. Home1 Blog Section 
+ 14. Home1 Blog Section
 ========================================*/
 .home1-blog-section {
   padding: 130px 0;
@@ -4415,7 +4415,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 15. Footer Section 
+ 15. Footer Section
 ========================================*/
 .footer-section {
   background-color: #153C3C;
@@ -4900,7 +4900,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 16. Home2 Banner Section 
+ 16. Home2 Banner Section
 ========================================*/
 .home2-banner-section {
   position: relative;
@@ -5039,7 +5039,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 17. Home2 Service Section 
+ 17. Home2 Service Section
 ========================================*/
 .home2-service-section .support-area {
   padding: 50px 40px;
@@ -5112,7 +5112,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 18. Home2 About Section 
+ 18. Home2 About Section
 ========================================*/
 .home2-about-section {
   background-color: #F4F5F6;
@@ -5208,7 +5208,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 19. Home2 Process Section 
+ 19. Home2 Process Section
 ========================================*/
 .home2-process-section .process-card {
   position: relative;
@@ -5329,7 +5329,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 20. Home2 Newsletter Section 
+ 20. Home2 Newsletter Section
 ========================================*/
 .home2-newletter-section .newletter-video-area {
   position: relative;
@@ -5476,7 +5476,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 21. Home2 Team Section 
+ 21. Home2 Team Section
 ========================================*/
 .team-card2 .team-img {
   border-radius: 18px 18px 0 0;
@@ -5630,7 +5630,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 22. Home2 Testimonial Section 
+ 22. Home2 Testimonial Section
 ========================================*/
 .home2-testimonial-section {
   padding: 130px 0;
@@ -5826,7 +5826,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 23. Home2 Faq Section 
+ 23. Home2 Faq Section
 ========================================*/
 .home2-faq-section .faq-img {
   padding-right: 20px;
@@ -5900,7 +5900,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 24. Home2 Counter Section 
+ 24. Home2 Counter Section
 ========================================*/
 .home2-counter-section {
   background-color: #153C3C;
@@ -5979,7 +5979,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 25. Home2 Contact Section 
+ 25. Home2 Contact Section
 ========================================*/
 .home2-contact-section {
   padding: 130px 0;
@@ -6128,7 +6128,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 26. Home2 Blog Section 
+ 26. Home2 Blog Section
 ========================================*/
 .blog-card2 {
   border-radius: 18px;
@@ -6304,7 +6304,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 27. Home3 Banner Section 
+ 27. Home3 Banner Section
 ========================================*/
 .home3-banner-section {
   background: linear-gradient(165.68deg, #153C3C 28.25%, #84A17D 106.13%);
@@ -6508,7 +6508,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 28. Home3 Logo Section 
+ 28. Home3 Logo Section
 ========================================*/
 .home3-logo-section .title-area {
   text-align: center;
@@ -6532,7 +6532,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 29. Home3 Service Section 
+ 29. Home3 Service Section
 ========================================*/
 .home3-service-section .section-title {
   max-width: 550px;
@@ -6759,7 +6759,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 30. Home3 About Section 
+ 30. Home3 About Section
 ========================================*/
 .home3-about-section {
   background-color: #F4F5F6;
@@ -6918,7 +6918,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 31. Home3 Portfolio Section 
+ 31. Home3 Portfolio Section
 ========================================*/
 .home3-portfolio-section {
   background-color: #153C3C;
@@ -7019,7 +7019,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 32. Home3 Pricing Plan Section 
+ 32. Home3 Pricing Plan Section
 ========================================*/
 .home3-pricing-plan-section .nav-area {
   display: flex;
@@ -7088,7 +7088,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 33. Home3 Testimonial Section 
+ 33. Home3 Testimonial Section
 ========================================*/
 .home3-testimonial-section {
   padding: 130px 0;
@@ -7241,7 +7241,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 34. Home3 Blog Section 
+ 34. Home3 Blog Section
 ========================================*/
 .blog-card3 {
   position: relative;
@@ -7534,7 +7534,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 35. Home3 Project Banner Section 
+ 35. Home3 Project Banner Section
 ========================================*/
 .home3-project-banner-section {
   background-color: var(--primary-color);
@@ -7612,7 +7612,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 36. Breadcrumb Section 
+ 36. Breadcrumb Section
 ========================================*/
 .breadcrumb-section {
   background-size: cover;
@@ -7727,7 +7727,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 37. Faq Contact Section 
+ 37. Faq Contact Section
 ========================================*/
 .faq-contact-section .single-contact {
   background-color: #F4F5F6;
@@ -7870,7 +7870,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 39. Blog Standard Page 
+ 39. Blog Standard Page
 ========================================*/
 .blog-st-card .blog-st-img {
   border-radius: 18px 18px 0 0;
@@ -8386,7 +8386,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 40. Blog Details Page 
+ 40. Blog Details Page
 ========================================*/
 .details-content-wrap .line-break {
   height: 15px;
@@ -8897,7 +8897,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 41. Error Page 
+ 41. Error Page
 ========================================*/
 .error-page .error-content {
   text-align: center;
@@ -8922,7 +8922,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 42. Contact Page 
+ 42. Contact Page
 ========================================*/
 .contact-map-section iframe {
   width: 100%;
@@ -8946,7 +8946,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 43. Team Details Page 
+ 43. Team Details Page
 ========================================*/
 .team-details-page .team-details-img {
   position: sticky;
@@ -9188,7 +9188,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 44. Portfolio Details Page 
+ 44. Portfolio Details Page
 ========================================*/
 .portfolio-details-page .portfolio-details-thumb img {
   border-radius: 18px;
@@ -9277,7 +9277,7 @@ header.style-1.two {
 }
 
 /*=====================================
- 45. Service Details Page 
+ 45. Service Details Page
 ========================================*/
 .service-details-page .service-details-thumb img {
   border-radius: 18px;
