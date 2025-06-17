@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="wpOceans">
+    <meta name="author" content="Youne Studio.">
     <link rel="shortcut icon" type="image/png" href="{{asset('template2/images/favicon.png')}}">
     <title>{{$event->groom_name . ' & ' . $event->bride_name}} - Invitation de {{ $invitation->guest->name }}</title>
     <link href="{{asset('template2/css/themify-icons.css')}}" rel="stylesheet">

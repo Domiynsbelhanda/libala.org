@@ -10,6 +10,7 @@
                 <div class="col-lg-12 d-flex justify-content-center">
                     <div class="banner-content">
                         <h1>Modèles et Templates</h1>
+                        <h4 style="color: white; text-align: center">Plusieurs templates sont en cours d'integration, <br> vous avez la possibilité de les choisir en premier.</h4>
                         <ul class="breadcrumb-list">
                             <li><a href="{{route('home')}}">Accueil</a></li>
                             <li>Nos Templates</li>
@@ -26,7 +27,7 @@
         <div class="container">
             <div class="row g-4 mb-70">
                 @foreach($templates as $template)
-                    <div class="col-lg-4 col-md-6 wow animate fadeInDown me-2 card" data-wow-delay="{{ $loop->iteration * 200 }}ms" data-wow-duration="1500ms">
+                    <div class="col-lg-4 col-md-6 wow animate fadeInDown" data-wow-delay="{{ $loop->iteration * 200 }}ms" data-wow-duration="1500ms">
                         <div class="portfolio-card two magnetic-item">
                             <div class="portfolio-img">
                                 <img src="{{ asset('storage/' . $template->image) }}" alt="{{ $template->name }}">
