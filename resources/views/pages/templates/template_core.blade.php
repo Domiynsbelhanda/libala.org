@@ -91,12 +91,12 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            
+
                             <h2>Nous allons nous marier</h2>
                             <h1>
                                 {{$event->groom_name}} & {{$event->bride_name}}
                             </h1>
-                            <h3>
+                            <h3 style="color: white">
                                 {{ mb_strtoupper(\Carbon\Carbon::parse($event->wedding_date)->translatedFormat('l d F Y')) }}
                             </h3>
                             <div class="simply-countdown simply-countdown-one"></div>
