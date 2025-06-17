@@ -86,10 +86,19 @@
                 <div class="col-md-8 col-md-offset-2 text-center">
                     <div class="display-t">
                         <div class="display-tc animate-box" data-animate-effect="fadeIn">
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            
                             <h2>Nous allons nous marier</h2>
                             <h1>
                                 {{$event->groom_name}} & {{$event->bride_name}}
                             </h1>
+                            <h3>
+                                {{ mb_strtoupper(\Carbon\Carbon::parse($event->wedding_date)->translatedFormat('l d F Y')) }}
+                            </h3>
                             <div class="simply-countdown simply-countdown-one"></div>
                             <p><a class="btn btn-default btn-sm">Save the date</a></p>
                         </div>
@@ -103,13 +112,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-                    <h2>Bonjour!</h2>
-                    <h3>
-                        {{ mb_strtoupper(\Carbon\Carbon::parse($event->wedding_date)->translatedFormat('l d F Y')) }}
-                    </h3>
+                    <h2>Bonjour {{ $invitation->guest->name }}!</h2>
                     <p>
                         Nous vous avons invité à célébrer notre mariage
                     </p>
+                    <h3>
+                        Table : {{ $invitation->table->name }}
+                    </h3>
+
+                    <div>
+                        {!! $qrcode !!}
+                    </div>
                 </div>
             </div>
 
@@ -122,34 +135,38 @@
             )
 
                 <div class="couple-wrap animate-box">
-                <div class="couple-half">
-                    <div class="groom">
-                        <img src="{{ asset('storage/' . $event->husband_image) }}" alt="groom" class="img-responsive">
+                    <div class="couple-half">
+                        <div class="groom">
+                            <img src="{{ asset('storage/' . $event->husband_image) }}" alt="groom"
+                                 style="object-fit: cover!important;"
+                                 class="img-responsive">
+                        </div>
+                        <div class="desc-groom">
+                            <h3>
+                                {{ $event->husband_fullname }}
+                            </h3>
+                            <p>
+                                {{ $event->husband_description }}
+                            </p>
+                        </div>
                     </div>
-                    <div class="desc-groom">
-                        <h3>
-                            {{ $event->husband_fullname }}
-                        </h3>
-                        <p>
-                            {{ $event->husband_description }}
-                        </p>
+                    <p class="heart text-center"><i class="icon-heart2"></i></p>
+                    <div class="couple-half">
+                        <div class="bride">
+                            <img src="{{ asset('storage/' . $event->wife_image) }}" alt="groom"
+                                 style="object-fit: cover!important;"
+                                 class="img-responsive">
+                        </div>
+                        <div class="desc-bride">
+                            <h3>
+                                {{ $event->wife_fullname }}
+                            </h3>
+                            <p>
+                                {{ $event->wife_description }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <p class="heart text-center"><i class="icon-heart2"></i></p>
-                <div class="couple-half">
-                    <div class="bride">
-                        <img src="{{ asset('storage/' . $event->wife_image) }}" alt="groom" class="img-responsive">
-                    </div>
-                    <div class="desc-bride">
-                        <h3>
-                            {{ $event->wife_fullname }}
-                        </h3>
-                        <p>
-                            {{ $event->wife_description }}
-                        </p>
-                    </div>
-                </div>
-            </div>
 
             @endif
         </div>
@@ -252,130 +269,139 @@
         </div>
     </div>
 
-    <div id="fh5co-started" class="fh5co-bg" style="background-image:url(images/img_bg_4.jpg);">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row animate-box">
-                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-                    <h2>Are You Attending?</h2>
-                    <p>Please Fill-up the form to notify you that you're attending. Thanks.</p>
-                </div>
-            </div>
-            <div class="row animate-box">
-                <div class="col-md-10 col-md-offset-1">
-                    <form class="form-inline">
-                        <div class="col-md-4 col-sm-4">
-                            <div class="form-group">
-                                <label for="name" class="sr-only">Name</label>
-                                <input type="name" class="form-control" id="name" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <div class="form-group">
-                                <label for="email" class="sr-only">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <button type="submit" class="btn btn-default btn-block">I am Attending</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div id="fh5co-gallery" class="fh5co-section-gray">
+    @if(!empty($event->gallery) && count($event->gallery) > 0)
+        <div id="fh5co-gallery" class="fh5co-section-gray">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-                    <span>Our Memories</span>
-                    <h2>Wedding Gallery</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <h2>Notre Gallerie</h2>
                 </div>
             </div>
             <div class="row row-bottom-padded-md">
                 <div class="col-md-12">
                     <ul id="fh5co-gallery-list">
 
-                        <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-1.jpg); ">
-                            <a href="images/gallery-1.jpg">
-                                <div class="case-studies-summary">
-                                    <span>14 Photos</span>
-                                    <h2>Two Glas of Juice</h2>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-2.jpg); ">
-                            <a href="#" class="color-2">
-                                <div class="case-studies-summary">
-                                    <span>30 Photos</span>
-                                    <h2>Timer starts now!</h2>
-                                </div>
-                            </a>
-                        </li>
+                        @if(isset($event->gallery[0]))
+                            <li class="one-third animate-box" data-animate-effect="fadeIn"
+                                style="background-image: url({{ asset('storage/' . $event->gallery[0]) }}); ">
+                                <a href="{{ asset('storage/' . $event->gallery[0]) }}">
+                                </a>
+                            </li>
+                        @endif
 
+                            @if(isset($event->gallery[1]))
+                                <li class="one-third animate-box" data-animate-effect="fadeIn"
+                                    style="background-image: url({{ asset('storage/' . $event->gallery[1]) }}); ">
+                                    <a href="{{ asset('storage/' . $event->gallery[1]) }}">
+                                    </a>
+                                </li>
+                            @endif
 
-                        <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-3.jpg); ">
-                            <a href="#" class="color-3">
-                                <div class="case-studies-summary">
-                                    <span>90 Photos</span>
-                                    <h2>Beautiful sunset</h2>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-4.jpg); ">
-                            <a href="#" class="color-4">
-                                <div class="case-studies-summary">
-                                    <span>12 Photos</span>
-                                    <h2>Company's Conference Room</h2>
-                                </div>
-                            </a>
-                        </li>
+                            @if(isset($event->gallery[2]))
+                                <li class="one-third animate-box" data-animate-effect="fadeIn"
+                                    style="background-image: url({{ asset('storage/' . $event->gallery[2]) }}); ">
+                                    <a href="{{ asset('storage/' . $event->gallery[2]) }}">
+                                    </a>
+                                </li>
+                            @endif
 
-                        <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-5.jpg); ">
-                            <a href="#" class="color-3">
-                                <div class="case-studies-summary">
-                                    <span>50 Photos</span>
-                                    <h2>Useful baskets</h2>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-6.jpg); ">
-                            <a href="#" class="color-4">
-                                <div class="case-studies-summary">
-                                    <span>45 Photos</span>
-                                    <h2>Skater man in the road</h2>
-                                </div>
-                            </a>
-                        </li>
+                            @if(isset($event->gallery[3]))
+                                <li class="one-third animate-box" data-animate-effect="fadeIn"
+                                    style="background-image: url({{ asset('storage/' . $event->gallery[3]) }}); ">
+                                    <a href="{{ asset('storage/' . $event->gallery[3]) }}">
+                                    </a>
+                                </li>
+                            @endif
 
-                        <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-7.jpg); ">
-                            <a href="#" class="color-4">
-                                <div class="case-studies-summary">
-                                    <span>35 Photos</span>
-                                    <h2>Two Glas of Juice</h2>
-                                </div>
-                            </a>
-                        </li>
+                            @if(isset($event->gallery[4]))
+                                <li class="one-third animate-box" data-animate-effect="fadeIn"
+                                    style="background-image: url({{ asset('storage/' . $event->gallery[4]) }}); ">
+                                    <a href="{{ asset('storage/' . $event->gallery[4]) }}">
+                                    </a>
+                                </li>
+                            @endif
 
-                        <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-8.jpg); ">
-                            <a href="#" class="color-5">
-                                <div class="case-studies-summary">
-                                    <span>90 Photos</span>
-                                    <h2>Timer starts now!</h2>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/gallery-9.jpg); ">
-                            <a href="#" class="color-6">
-                                <div class="case-studies-summary">
-                                    <span>56 Photos</span>
-                                    <h2>Beautiful sunset</h2>
-                                </div>
-                            </a>
-                        </li>
+                            @if(isset($event->gallery[5]))
+                                <li class="one-third animate-box" data-animate-effect="fadeIn"
+                                    style="background-image: url({{ asset('storage/' . $event->gallery[5]) }}); ">
+                                    <a href="{{ asset('storage/' . $event->gallery[5]) }}">
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if(isset($event->gallery[6]))
+                                <li class="one-third animate-box" data-animate-effect="fadeIn"
+                                    style="background-image: url({{ asset('storage/' . $event->gallery[6]) }}); ">
+                                    <a href="{{ asset('storage/' . $event->gallery[6]) }}">
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if(isset($event->gallery[7]))
+                                <li class="one-third animate-box" data-animate-effect="fadeIn"
+                                    style="background-image: url({{ asset('storage/' . $event->gallery[7]) }}); ">
+                                    <a href="{{ asset('storage/' . $event->gallery[7]) }}">
+                                    </a>
+                                </li>
+                            @endif
+
                     </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
+    <div id="fh5co-started" class="fh5co-bg" style="background-image:url({{asset('core/images/img_bg_4.jpg')}});">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row animate-box">
+                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <h2>
+                        Confirmez votre présence
+                    </h2>
+                </div>
+            </div>
+            <div class="row animate-box">
+                <div class="col-md-10 col-md-offset-1" style="background-color: #000000; padding: 35px!important;">
+                    <form class="form-inline" method="POST" action="{{ route('guest.rsvp', [$event->reference, $invitation->code]) }}">
+                        @csrf
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <p>
+                                    <input type="radio" id="attend" name="is_attending" value="1" checked>
+                                    <label for="attend">Oui, je serai présent(e)</label>
+                                </p>
+                                <p>
+                                    <input type="radio" id="not" name="is_attending" value="0">
+                                    <label for="not">Désolé(e), je ne pourrai pas venir</label>
+                                </p>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <label for="number_of_people">Nombre total de personnes (vous compris)</label>
+                                <select name="number_of_people" class="form-control" required>
+                                    @for($i = 1; $i <= 5; $i++)
+                                        <option style="color: black" value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div>
+                                <label for="additional_info">Autres informations</label>
+                                <textarea name="additional_info" class="form-control" rows="4" placeholder="Allergies, remarques, etc."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 15px!important;">
+                            <div class="">
+                                <button type="submit" class="btn btn-default btn-block">Envoyez</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -387,16 +413,19 @@
             <div class="row copyright">
                 <div class="col-md-12 text-center">
                     <p>
-                        <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small>
-                        <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
-                    </p>
-                    <p>
-                    <ul class="fh5co-social-icons">
-                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                        <li><a href="#"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    </ul>
+                        <small class="block">
+                            Contact :
+                            <a href="tel:+243818045132">+243818045132</a>
+                        </small>
+
+                        <small>
+                            Email :
+                            <a href="mailto:reservation@libala.org">reservation@libala.org</a>
+                        </small>
+                        <small class="block">
+                            &copy; Copyright 2025 | <a href="{{url('www.youne.studio')}}">Youne Studio.</a> | All right
+                            reserved.
+                        </small>
                     </p>
                 </div>
             </div>
@@ -432,23 +461,22 @@
 <script src="{{ asset('core/js/main.js') }}"></script>
 
 <script>
-    var d = new Date(new Date().getTime() + 200 * 120 * 120 * 2000);
+    var weddingDate = new Date("{{ \Carbon\Carbon::parse($event->wedding_date)->format('Y-m-d') }}");
 
-    // default example
     simplyCountdown('.simply-countdown-one', {
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate()
+        year: weddingDate.getFullYear(),
+        month: weddingDate.getMonth() + 1, // JS months are 0-indexed
+        day: weddingDate.getDate()
     });
 
-    //jQuery example
     $('#simply-countdown-losange').simplyCountdown({
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate(),
+        year: weddingDate.getFullYear(),
+        month: weddingDate.getMonth() + 1,
+        day: weddingDate.getDate(),
         enableUtc: false
     });
 </script>
+
 
 </body>
 </html>

@@ -5,7 +5,7 @@
  * License : MIT
  * Version : 1.3.2
  * Author : Vincent Loy <vincent.loy1@gmail.com>
- * Contributors : 
+ * Contributors :
  *  - Justin Beasley <JustinB@harvest.org>
  *  - Nathan Smith <NathanS@harvest.org>
  */
@@ -122,10 +122,10 @@
                 minutes: 0,
                 seconds: 0,
                 words: {
-                    days: 'day',
-                    hours: 'hour',
+                    days: 'jour',
+                    hours: 'heure',
                     minutes: 'minute',
-                    seconds: 'second',
+                    seconds: 'seconde',
                     pluralLetter: 's'
                 },
                 plural: true,
