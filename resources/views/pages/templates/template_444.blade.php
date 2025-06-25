@@ -76,19 +76,6 @@
 
 <!-- start page-wrapper -->
 <div class="page-wrap">
-    <!-- start preloader -->
-    <div class="preloader">
-        <div class="vertical-centered-box">
-            <div class="content">
-                <div class="loader-circle"></div>
-                <div class="loader-line-mask">
-                    <div class="loader-line"></div>
-                </div>
-                <img src="{{asset('template2/images/preloader.png')}}" alt="">
-            </div>
-        </div>
-    </div>
-    <!-- end preloader -->
 
     <section class="templatesss">
     </section>
@@ -296,99 +283,6 @@
     </section>
     <!-- end story-section -->
 
-
-    <!-- start of wpo-contact-section -->
-    <section class="wpo-contact-section section-padding pt-0" id="rsvp">
-        <div class="container-fluid">
-            <div class="contact-wrap">
-                <div class="row">
-                    <div class="col col-xl-8 col-lg-7 col-md-12 col-12">
-                        <div class="contact-img-wrap">
-                            <div class="contact-img wow fadeInLeftSlow" data-wow-duration="1700ms">
-                                <img src="{{asset('template2/images/rsvp/img-1.png')}}" alt="">
-                            </div>
-                            <div class="back-shape">
-                                <svg viewBox="0 0 693 954" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15 346.5C15 163.418 163.418 15 346.5 15C529.582 15 678 163.418 678 346.5V939H15V346.5Z"
-                                        stroke="#9F7B59" stroke-width="30" />
-                                    <rect x="50" y="168" width="30" height="765" fill="#9F7B59" />
-                                    <rect x="100" y="106" width="30" height="827" fill="#9F7B59" />
-                                    <rect x="150" y="67" width="30" height="866" fill="#9F7B59" />
-                                    <rect x="200" y="45" width="30" height="879" fill="#9F7B59" />
-                                    <rect x="250" y="23" width="30" height="910" fill="#9F7B59" />
-                                    <rect x="300" y="14" width="30" height="919" fill="#9F7B59" />
-                                    <rect x="350" y="14" width="30" height="919" fill="#9F7B59" />
-                                    <rect x="400" y="14" width="30" height="919" fill="#9F7B59" />
-                                    <rect x="450" y="34" width="30" height="899" fill="#9F7B59" />
-                                    <rect x="500" y="67" width="30" height="866" fill="#9F7B59" />
-                                    <rect x="550" y="100" width="30" height="833" fill="#9F7B59" />
-                                    <rect x="600" y="148" width="30" height="785" fill="#9F7B59" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col col-xl-4 col-lg-5 col-md-12 col-12">
-                        <div class="wpo-contact-section-wrapper wow fadeInRightSlow" data-wow-duration="1700ms">
-                            <div class="wpo-contact-form-area">
-                                <div class="wpo-section-title">
-                                    <h2>Confirmez votre présence</h2>
-                                </div>
-                                <form method="POST" action="{{ route('guest.rsvp', [$event->reference, $invitation->code]) }}">
-                                    @csrf
-
-                                    <div class="radio-buttons mb-3">
-                                        <p>
-                                            <input type="radio" id="attend" name="is_attending" value="1" checked>
-                                            <label for="attend">Oui, je serai présent(e)</label>
-                                        </p>
-                                        <p>
-                                            <input type="radio" id="not" name="is_attending" value="0">
-                                            <label for="not">Désolé(e), je ne pourrai pas venir</label>
-                                        </p>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="number_of_people">Nombre total de personnes (vous compris)</label>
-                                        <select name="number_of_people" class="form-control" required>
-                                            @for($i = 1; $i <= 5; $i++)
-                                                <option value="{{ $i }}">{{ $i }}</option>
-                                            @endfor
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="additional_info">Autres informations</label>
-                                        <textarea name="additional_info" class="form-control" rows="4" placeholder="Allergies, remarques, etc."></textarea>
-                                    </div>
-
-                                    <div class="submit-area">
-                                        <button type="submit" class="theme-btn">Confirmer</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            @if(session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-
-                        </div>
-                    </div>
-                </div>
-                <div class="shape-1 wow fadeInLeftSlow" data-wow-duration="2000ms"><img
-                        src="{{asset('template2/images/rsvp/left-shape.png')}}" alt=""></div>
-                <div class="shape-2 wow fadeInRightSlow" data-wow-duration="2000ms"><img
-                        src="{{asset('template2/images/rsvp/right-shape.png')}}" alt=""></div>
-            </div>
-        </div>
-        <div class="bottom-text marquee">
-            <h2>Nous vous attendons pour célébrer notre amour.</h2>
-        </div>
-    </section>
-    <!-- end of wpo-contact-section -->
-
     <!-- start wpo-event-section -->
     <section class="wpo-event-section section-padding pt-0" id="event">
         <div class="container">
@@ -423,6 +317,7 @@
                     <h4 class="poort-text poort-in-right">Sweet Memories</h4>
                     <h2 class="poort-text poort-in-right">Notre Gallerie</h2>
                 </div>
+
                 <div class="gallery-main-wrap">
                     <div class="row align-items-center">
                         {{-- 1ère image --}}
