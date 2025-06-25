@@ -192,12 +192,37 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
                     ->openUrlInNewTab(),
 
 
+                Tables\Actions\Action::make('ouvrir_miniature')
+                    ->label('Ouvrir la miniature')
+                    ->icon('heroicon-o-photo')
+                    ->color('success')
+                    ->url(function ($record) {
+                        return route('generate.invitation.image', [
+                            'reference' => $record->event->reference,
+                            'code' => $record->code,
+                        ]);
+                    })
+                    ->openUrlInNewTab(),
+
+
                 Tables\Actions\Action::make('voir_invitation')
                     ->label('Voir l’invitation')
                     ->icon('heroicon-o-eye')
                     ->color('primary')
                     ->url(function ($record) {
                         return route('event.invitation', [
+                            'reference' => $record->event->reference,
+                            'code' => $record->code,
+                        ]);
+                    })
+                    ->openUrlInNewTab(),
+
+                Tables\Actions\Action::make('voir_invitation')
+                    ->label('Voir la miniature')
+                    ->icon('heroicon-o-eye')
+                    ->color('secondary')
+                    ->url(function ($record) {
+                        return route('event.invitation.image', [
                             'reference' => $record->event->reference,
                             'code' => $record->code,
                         ]);

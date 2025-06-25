@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/evenement/{reference}', [HomeController::class, 'event'])->name('event.detail');
 Route::get('/evenement/{reference}/invitation/{code}', [HomeController::class, 'invitation'])->name('event.invitation');
+Route::get('/evenement/{reference}/invitation/{code}/image', [HomeController::class, 'invitationImage'])->name('event.invitation.image');
+Route::get('/generate-invitation-image/{reference}/{code}', [HomeController::class, 'generateInvitationImage'])->name('generate.invitation.image');
 Route::post('/evenement/{reference}/invitation/{code}/rsvp', [HomeController::class, 'rsvp'])->name('guest.rsvp');
 
 Route::get('/verifier-invitation', [\App\Http\Controllers\InvitationVerifierController::class, 'form'])->name('invitation.check.form');

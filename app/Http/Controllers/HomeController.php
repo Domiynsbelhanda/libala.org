@@ -7,6 +7,8 @@ use App\Models\GuestTable;
 use App\Models\Template;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Spatie\Browsershot\Browsershot;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -31,6 +33,41 @@ class HomeController extends Controller
                 'qrcode' => QrCode::size(200)->generate($invitationUrl),
             ]
         );
+    }
+
+    public function invitationImage($reference, $code)
+    {
+        $event = Event::where('reference', $reference)->firstOrFail();
+        $invitation = GuestTable::where('code', $code)->firstOrFail();
+        $invitationUrl = route('event.invitation', ['reference' => $reference, 'code' => $code]);
+
+        $bladePath = 'pages.templates.image';
+
+        return view($bladePath,
+            ['event'=>$event, 'invitation'=>$invitation,
+                'qrcode' => QrCode::size(280)->generate($invitationUrl),
+            ]
+        );
+    }
+
+
+    public function generateInvitationImage(string $reference, string $code)
+    {
+        $url = route('event.invitation.image', ['reference' => $reference, 'code' => $code]);
+
+        $filename = "invitations/{$reference}_{$code}.png";
+
+        if (!Storage::disk('public')->exists($filename)) {
+            Browsershot::url($url)
+                ->setChromePath('C:\Users\TON_NOM\AppData\Local\Google\Chrome\Application\chrome.exe')
+                ->windowSize(1000, 1000)
+                ->waitUntilNetworkIdle()
+                ->setScreenshotType('png')
+                ->setOption('dumpio', true)
+                ->save(Storage::disk('public')->path($filename));
+        }
+
+        return response()->file(Storage::disk('public')->path($filename));
     }
 
     public function rsvp(Request $request, $reference, $code)

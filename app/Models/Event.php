@@ -40,8 +40,8 @@ class Event extends Authenticatable
         'wife_fullname',
         'wife_description',
         'wife_image',
-
         'gallery',
+        'w_image'
     ];
 
     protected static function boot()

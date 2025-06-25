@@ -42,6 +42,15 @@ class EventResource extends Resource
                             ->imagePreviewHeight('150')
                             ->maxSize(2048), // taille en Ko
 
+
+                        Forms\Components\FileUpload::make('w_image')
+                            ->label('Miniature Template')
+                            ->image()
+                            ->directory('miniature') // le dossier dans storage/app/public/couples
+                            ->visibility('public') // pour affichage sans auth spéciale
+                            ->imagePreviewHeight('150')
+                            ->maxSize(2048), // taille en Ko
+
                         Forms\Components\Select::make('template_id')
                             ->label("Modèle de présentation")
                             ->relationship('template', 'name') // suppose que la colonne est 'name'
