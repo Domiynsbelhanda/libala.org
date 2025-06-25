@@ -39,7 +39,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            margin-top: 190px!important;
+            margin-top: 240px!important;
             transform: translate(-50%, -50%);
         }
 
