@@ -77,7 +77,7 @@
     <section class="static-hero">
         <div class="static-main-box">
             <div class="static-inner-box">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col col-xl-6 col-lg-6 col-12">
                             <div class="static-hero-img">
