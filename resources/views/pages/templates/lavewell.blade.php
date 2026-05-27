@@ -338,6 +338,20 @@
             ])->filter()->count();
         @endphp
 
+        <div class="blog-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center cursor-scale" data-aos="fade-up">
+                            <div class="section-main-title cursor-scale">
+                                <h1>Notre Programme</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         @if($event->church_name && $event->church_date && $event->church_time)
             <div class="about-area style-2">
             <div class="container-fluid">
