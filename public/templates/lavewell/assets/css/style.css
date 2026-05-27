@@ -40,7 +40,7 @@ Tags:   bride, couple, groom, indain weeding, invitation, muslim wedding, respon
 29. start lovebird blog area 2column css
 30. Start lovebird blog details css
 31. start lovebird service details css
-32. Scroll Up Css 
+32. Scroll Up Css
 33. Curser pointer CSS
 34. lovebirdro Loader Css
 =======================*/
@@ -601,7 +601,7 @@ button.slider-next {
   <!--start  lovebird service area css-->
 <!-- ======================================= -->*/
 .service-area {
-  padding: 150px 0 100px;
+  padding: 16px 0 100px;
   background: url(../images/home-1/ser-bg.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -764,7 +764,7 @@ p.service-desc {
   <!--start  lovebird counter area css-->
 <!-- ======================================= -->*/
 .coutner-area {
-  background: url(../images/home-1/counter-bg.png);
+  background: url(../images/home-1/counter-bg-update.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -4380,12 +4380,12 @@ li.category-text {
   top: -3px;
 }
 
-/* --- Quantity button 
+/* --- Quantity button
 ================================*/
 .category-count-button {
   display: inline-flex;
   padding: 8px 0 15px;
-} 
+}
 
 .quantity-with_btn {
   display: flex;
@@ -4608,7 +4608,7 @@ table.tab-items-table td.table-text i {
 
 
 /*post comment box
-===================*/ 
+===================*/
 
 .post-comment-thumb {
   float: left;
@@ -4934,7 +4934,7 @@ li.current a span {
 }
 
 /*============================
-/* Scroll Up Css 
+/* Scroll Up Css
 ==============================*/
 
 #progress {

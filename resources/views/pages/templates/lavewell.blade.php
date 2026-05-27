@@ -83,7 +83,7 @@
     <div id="smooth-content">
 
 
-        <section class="py-5 position-relative overflow-hidden" style="min-height: 100vh; background: #f8f5f2;">
+        <section class="py-1 position-relative overflow-hidden" style="min-height: 100vh; background: #f8f5f2;">
 
             <!-- Background Left -->
             <div class="position-absolute top-0 start-0 w-100 h-100 d-none d-md-block">
@@ -229,9 +229,6 @@
             </div>
         @endif
 
-        <!--==================================================-->
-        <!--start  lovebird counter area-->
-        <!--==================================================-->
         <div class="coutner-area py-5">
             <div class="container">
                 <div class="row counter align-items-center justify-content-center text-center">
@@ -286,6 +283,44 @@
                             </div>
                             <div class="counter-desc">
                                 <p style="font-family: 'Poppins', sans-serif!important">SECONDE (S)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="blog-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center cursor-scale" data-aos="fade-up">
+                            <div class="section-main-title cursor-scale">
+                                <h1>Notre Dress Code</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6">
+                            <div class="blog-singele-box" data-aos="fade-down">
+                                <div class="blog-thumb">
+                                    <img src="{{ asset('templates/lavewell/assets/images/dress1.jpeg') }}" alt="blog" />
+                                    <div class="blog-content">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="blog-singele-box" data-aos="fade-down">
+                            <div class="blog-thumb">
+                                <img src="{{ asset('templates/lavewell/assets/images/dress2.jpeg') }}" alt="blog" />
+                                <div class="blog-content">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -392,12 +427,8 @@
         @endif
 
         <section class="contact-area py-5" id="rsvp">
-
             <div class="container">
-
                 <div class="row g-4 align-items-stretch">
-
-                    <!-- LEFT : INVITATION + QR CODE -->
                     <div class="col-lg-5">
 
                         <div
@@ -633,30 +664,50 @@
 
 
         @if(!empty($event->gallery) && count($event->gallery) > 0)
-            <div class="blog-area">
+
+            <div class="gallery-area">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="section-title text-center cursor-scale" data-aos="fade-up">
+                            <div class="section-title text-center cursor-scale" data-aos="flip-up">
+                                <div class="section-sub-title">
+                                    <h5>Gallery of Love</h5>
+                                </div>
                                 <div class="section-main-title cursor-scale">
-                                    <h1>Notre Gallerie</h1>
+                                    <h1>Picture Perfect Moments</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        @forelse($event->gallery as $gallery)
-                        <div class="col-lg-4 col-md-6">
-                            <div class="blog-singele-box" data-aos="fade-down">
-                                <div class="blog-thumb">
-                                    <img src="{{ asset('storage/' . $gallery) }}" alt="blog" />
-                                    <div class="blog-content">
+                </div>
+                <div class="gallery__wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            @forelse($event->gallery as $gallery)
+                                <div class="col-xl-3 col-lg-4 col-md-6">
+                                    <div class="gallery__thumb-box">
+                                        <div class="gallery__thumb">
+                                            <a
+                                                class="popup-image"
+                                                href="{{ asset('storage/' . $gallery) }}"
+                                            ><img
+                                                    class="w-100"
+                                                    src="{{ asset('storage/' . $gallery) }}"
+                                                    alt=""
+                                                />
+                                                <div class="gallery__thumb-icon">
+                                                    <img
+                                                        src="{{ asset('templates/lavewell/assets/images/home-1/gallery-icon.png') }}"
+                                                        alt="icon"
+                                                    />
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @empty
+                            @endforelse
                         </div>
-                        @empty
-                        @endforelse
                     </div>
                 </div>
             </div>
