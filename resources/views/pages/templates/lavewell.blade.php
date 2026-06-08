@@ -298,7 +298,7 @@
                     <div class="col-lg-12">
                         <div class="section-title text-center cursor-scale" data-aos="fade-up">
                             <div class="section-main-title cursor-scale">
-                                <h1>Notre Dress Code</h1>
+                                <h1>Notre Thème</h1>
                             </div>
                         </div>
                     </div>
@@ -314,16 +314,6 @@
                                 </div>
                             </div>
                         </div>
-
-                    <div class="col-lg-6 col-md-6">
-                        <div class="blog-singele-box" data-aos="fade-down">
-                            <div class="blog-thumb">
-                                <img src="{{ asset('templates/lavewell/assets/images/dress2.jpeg') }}" alt="blog" />
-                                <div class="blog-content">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
