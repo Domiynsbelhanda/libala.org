@@ -38,6 +38,7 @@ class EditEvent extends EditRecord
                 ->color('warning')
                 ->tooltip('Voir la répartition des invités par table'),
 
+
             Actions\Action::make('save')
                 ->label('Enregistrer')
                 ->color('primary')
@@ -45,6 +46,16 @@ class EditEvent extends EditRecord
                 ->icon('heroicon-o-check')
                 ->requiresConfirmation(false)
                 ->visible(fn () => true),
+
+            Action::make('Prévisualisation')
+                ->label('👁️ Prévisualisation')
+                ->url(fn ($record) => static::getResource()::getUrl(
+                    'preview',
+                    ['record' => $record]
+                ))
+                ->color('info')
+                ->tooltip('Visualiser les invités par table')
+                ->openUrlInNewTab(),
 
             Actions\DeleteAction::make()
                 ->visible(!auth()->guard('event_manager')->check()),

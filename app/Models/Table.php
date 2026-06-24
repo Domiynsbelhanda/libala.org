@@ -14,4 +14,9 @@ class Table extends Model
         'capacity',
         'event_id',
     ];
+
+    public function guestTables()
+    {
+        return $this->hasMany(\App\Models\GuestTable::class);
+    }
 }

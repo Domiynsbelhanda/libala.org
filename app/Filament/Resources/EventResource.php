@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\EventResource\Pages;
 use App\Filament\Resources\EventResource\Pages\ManageTables;
+use App\Filament\Resources\EventResource\Pages\PreviewEvent;
 use App\Models\Event;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -203,6 +204,7 @@ class EventResource extends Resource
             'manage-tables' => ManageTables::route('/{record}/tables'),
             'manage-guests' => Pages\ManageGuests::route('/{record}/guests'),
             'guests-by-table' => Pages\ManageGuestTables::route('/{record}/guests-by-table'),
+            'preview' => PreviewEvent::route('/{record}/preview'),
         ];
     }
 }
