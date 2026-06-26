@@ -178,13 +178,13 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
                                 'reference' => $event->reference,
                                 'code' => $record->code,
                             ]);
+                        $message .= "\n\n- NB : Les cadeaux doivent être non emballés.\n\n";
 
-                        $phone = preg_replace('/[^0-9]/', '', $guest->phone);
+                        $phone = preg_replace('/[^0-9]/', '', $guest->phone ?? '');
                         $phone = ltrim($phone, '0');
 
                         if (empty($phone)) {
-                            $phone = preg_replace('/[^0-9]/', '', $event->manager_contact);
-                            $phone = ltrim($phone, '0');
+                            return 'https://wa.me/?text=' . urlencode($message);
                         }
 
                         return 'https://wa.me/' . $phone . '?text=' . urlencode($message);
