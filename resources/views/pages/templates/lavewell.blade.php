@@ -360,7 +360,7 @@
                         <div class="about-thumb" data-aos="zoom-in">
                             <img src="{{ isset($event->gallery[1]) && $event->gallery[1]
                                 ? asset('storage/' . $event->gallery[1])
-                                : asset('templates/lavewell/assets/images/home-1/about-thumb4.jpg') }}"
+                                : asset('templates/lavewell/assets/images/home-1/about-silva.jpg') }}"
                                  style="object-fit: cover!important;"
                                  alt="thumb" />
                         </div>
