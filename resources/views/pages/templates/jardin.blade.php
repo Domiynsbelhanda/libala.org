@@ -39,7 +39,7 @@
     @endif
         <img class="floral floral-top" src="{{ $flower }}" alt="">
         <p class="eyebrow">Ensemble, pour toujours</p>
-        <h1><span>{{ $event->groom_name }}</span><em>&</em><span>{{ $event->bride_name }}</span></h1>
+        <h1 class="couple-names"><span class="names-line">{{ $event->groom_name }} <em>&</em> {{ $event->bride_name }}</span></h1>
         <p class="script">Nous nous marions ce</p>
         @if($weddingDate)
             <div class="date-line"><span>{{ $weddingDate->translatedFormat('l') }}</span><strong>{{ $weddingDate->format('d') }}</strong><span>{{ $weddingDate->translatedFormat('F') }}</span></div>
@@ -51,6 +51,7 @@
     </header>
     <section class="section guest-card" id="invitation" aria-labelledby="guest-title">
         <p class="eyebrow">Une attention rien que pour vous</p>
+        <p class="invitation-label">Invitation de :</p>
         <h2 class="guest-name" id="guest-title">{{ $invitation->guest?->name ?? 'Chers invités' }}</h2>
         <div class="ornament" aria-hidden="true">❧</div>
         <p>Certains instants sont encore plus beaux lorsqu’ils sont partagés. Votre présence à nos côtés serait notre plus beau cadeau.</p>
@@ -80,7 +81,17 @@
         <section class="section" aria-labelledby="couple-title">
             <p class="eyebrow">Quelques mots pour nous découvrir</p><h2 id="couple-title">Les <em>mariés</em></h2>
             @foreach([['name' => $event->husband_fullname ?: $event->groom_name, 'description' => $event->husband_description, 'image' => $event->husband_image], ['name' => $event->wife_fullname ?: $event->bride_name, 'description' => $event->wife_description, 'image' => $event->wife_image]] as $person)
-                @if($person['description'])<article class="couple-detail">@if($person['image'])<img src="{{ asset('storage/' . $person['image']) }}" alt="{{ $person['name'] }}" loading="lazy">@endif<h3>{{ $person['name'] }}</h3><p>{{ $person['description'] }}</p></article>@endif
+                @if($person['description'])
+                    <article class="couple-detail {{ $loop->last ? 'couple-detail--bride' : 'couple-detail--groom' }}">
+                        <h3>{{ $person['name'] }}</h3>
+                        <div class="couple-bio {{ !$person['image'] && !$preview ? 'couple-bio--text-only' : '' }}">
+                            @if($person['image'] || $preview)
+                                <img src="{{ $person['image'] ? asset('storage/' . $person['image']) : asset('core/images/' . ($loop->last ? 'bride.jpg' : 'groom.jpg')) }}" alt="{{ $person['name'] }}" loading="lazy">
+                            @endif
+                            <p>{{ $person['description'] }}</p>
+                        </div>
+                    </article>
+                @endif
             @endforeach
         </section>
     @endif
@@ -115,5 +126,23 @@
     <footer class="closing"><div class="ornament" aria-hidden="true">❧</div><p class="small">Nous avons hâte de vous retrouver.</p><p class="script">{{ $event->groom_name }} & {{ $event->bride_name }}</p><p class="eyebrow">Fait avec amour · <a href="{{ route('home') }}">Libala.org</a></p></footer>
 </main>
 @if($preview)<script>document.querySelector('.rsvp form').addEventListener('submit', function(event) { event.preventDefault(); document.getElementById('demo-status').hidden = false; });</script>@endif
+<script>
+    (() => {
+        const heading = document.querySelector('.couple-names');
+        const line = heading.querySelector('.names-line');
+        function fitNames() {
+            heading.style.removeProperty('font-size');
+            const size = parseFloat(getComputedStyle(heading).fontSize);
+            const available = heading.clientWidth - 4;
+            const width = line.getBoundingClientRect().width;
+            if (width > available && available > 0) {
+                heading.style.fontSize = `${size * available / width}px`;
+            }
+        }
+        fitNames();
+        if (document.fonts) document.fonts.ready.then(fitNames);
+        window.addEventListener('resize', fitNames);
+    })();
+</script>
 </body>
 </html>

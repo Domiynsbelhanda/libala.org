@@ -14,6 +14,8 @@ class TemplatePreviewController extends Controller
         $event = new Event([
             'groom_name' => 'Gabriel',
             'bride_name' => 'Eliana',
+            'husband_description' => 'Attentionné et toujours partant pour une nouvelle aventure, Gabriel aime les moments simples et les grandes tablées en famille.',
+            'wife_description' => 'Souriante et passionnée, Eliana apporte de la douceur à chaque instant. Elle aime les voyages, les fleurs et les souvenirs que l’on crée ensemble.',
             'wedding_date' => '2027-06-19',
             'civil_commune' => 'La maison communale',
             'civil_date' => '2027-06-18',
