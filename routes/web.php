@@ -33,4 +33,9 @@ Route::post('/event/login', [\App\Http\Controllers\EventLoginController::class, 
 Route::post('/event/logout', [\App\Http\Controllers\EventLoginController::class, 'logout'])->name('event.logout');
 
 Route::get('/template', [\App\Http\Controllers\HomeController::class, 'template'])->name('template');
+Route::get('/modeles/jardin-de-promesses', [\App\Http\Controllers\TemplatePreviewController::class, 'jardin'])->name('template.jardin.preview');
 Route::get('/{code}/template', [\App\Http\Controllers\HomeController::class, 'template_detail'])->name('template.detail');
+
+// Public JPEG endpoints for link previews; no session or JavaScript required.
+Route::get('/partage/mariage.jpg', [\App\Http\Controllers\ShareImageController::class, 'show'])->name('share-image.default');
+Route::get('/partage/mariage/{reference}.jpg', [\App\Http\Controllers\ShareImageController::class, 'show'])->name('event.share-image');

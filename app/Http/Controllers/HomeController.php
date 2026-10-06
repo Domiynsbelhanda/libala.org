@@ -100,10 +100,14 @@ class HomeController extends Controller
 
     public function template_detail($code)
     {
+        $template = Template::where('code', $code)->firstOrFail();
+        if ($template->blade_path === 'pages.templates.jardin') {
+            return app(TemplatePreviewController::class)->jardin();
+        }
+
         $event = Event::where('reference', "CQ6QUMA64F")->firstOrFail();
         $invitation = GuestTable::where('code', "8842AF1F33EB")->firstOrFail();
         $invitationUrl = route('event.invitation', ['reference' => "CQ6QUMA64F", 'code' => "8842AF1F33EB"]);
-        $template = Template::where('code', $code)->firstOrFail();
 
         return view($template->blade_path,
             ['event'=>$event, 'invitation'=>$invitation,

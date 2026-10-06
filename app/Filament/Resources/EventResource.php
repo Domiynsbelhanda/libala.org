@@ -37,6 +37,8 @@ class EventResource extends Resource
                             ->required(),
                         Forms\Components\FileUpload::make('couple_photo')
                             ->label('Photo du couple')
+                            ->helperText('Cette photo sera utilisée pour l’aperçu du lien sur WhatsApp. Choisissez une photo nette des mariés.')
+                            ->disk('public')
                             ->image()
                             ->directory('couples') // le dossier dans storage/app/public/couples
                             ->visibility('public') // pour affichage sans auth spéciale
@@ -46,6 +48,7 @@ class EventResource extends Resource
 
                         Forms\Components\FileUpload::make('w_image')
                             ->label('Miniature Template')
+                            ->disk('public')
                             ->image()
                             ->directory('miniature') // le dossier dans storage/app/public/couples
                             ->visibility('public') // pour affichage sans auth spéciale
@@ -142,6 +145,7 @@ class EventResource extends Resource
                     ->schema([
                         Forms\Components\FileUpload::make('gallery')
                             ->label('Galerie (max 8 images)')
+                            ->disk('public')
                             ->multiple()
                             ->reorderable()
                             ->directory('galleries')

@@ -4,14 +4,7 @@
 @section('description', 'Créez, partagez et gérez vos invitations de mariage en ligne.')
 @section('keywords', 'libala, mariage congolais, digital wedding, gestion mariage')
 
-@section('og_title', $event->groom_name . ' & ' . $event->bride_name)
-@section('og_description', 'Un portail simple pour organiser votre cérémonie avec style.')
-@section('og_image', asset('storage/' . $event->couple_photo))
-@section('og_url', url()->current())
 
-@section('twitter_title', $event->groom_name . ' & ' . $event->bride_name)
-@section('twitter_description', 'Créez vos invitations digitales avec amour ❤️')
-@section('twitter_image', asset('storage/' . $event->couple_photo))
 
 @section('content')
     <section class="static-hero-s2">

@@ -30,7 +30,7 @@
                     <div class="col-lg-4 col-md-6 wow animate fadeInDown" data-wow-delay="{{ $loop->iteration * 200 }}ms" data-wow-duration="1500ms">
                         <div class="portfolio-card two magnetic-item">
                             <div class="portfolio-img">
-                                <img src="{{ asset('storage/' . $template->image) }}" alt="{{ $template->name }}">
+                                <img src="{{ $template->blade_path === 'pages.templates.jardin' ? asset('template2/images/slider/invitation-shape-1.png') : asset('storage/' . $template->image) }}" alt="{{ $template->name }}" @if($template->blade_path === 'pages.templates.jardin') style="background:#fcf9f2;object-fit:contain;aspect-ratio:4/5;padding:35px" @endif>
                             </div>
                             <div class="portfolio-content-wrap">
                                 <div class="portfolio-content">

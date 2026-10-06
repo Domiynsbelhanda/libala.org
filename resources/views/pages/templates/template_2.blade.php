@@ -7,6 +7,7 @@
     <meta name="author" content="Youne Studio.">
     <link rel="shortcut icon" type="image/png" href="{{asset('template2/images/favicon.png')}}">
     <title>{{$event->groom_name . ' & ' . $event->bride_name}} - Invitation de {{ $invitation->guest->name }}</title>
+    @include('partials.share-meta')
     <link href="{{asset('template2/css/themify-icons.css')}}" rel="stylesheet">
     <link href="{{ asset('template2/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('template2/css/flaticon.css') }}" rel="stylesheet">
@@ -36,23 +37,6 @@
     <meta name="description" content="@yield('description', 'Organisez votre mariage avec élégance et simplicité.')">
     <meta name="keywords" content="@yield('keywords', 'mariage, invitations, libala, Congo, digital wedding')">
 
-    <meta property="og:description" content="@yield('og_description', 'Gérez vos invités et événements de mariage en ligne.')">
-    <meta property="og:url" content="@yield('og_url', url()->current())">
-    <meta property="og:type" content="website">
-
-    @php
-        $ogImage = asset('storage/' . $event->couple_photo); // ou autre photo de couple selon ton modèle
-    @endphp
-
-    <meta property="og:image" content="{{ $ogImage }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:image" content="{{ $ogImage }}">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:description" content="@yield('twitter_description', 'Invitations de mariage digitales au Congo.')">
-    <meta name="twitter:image" content="@yield('twitter_image', asset('images/wedding-cover.jpg'))">
 </head>
 
 <body>

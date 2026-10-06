@@ -177,6 +177,7 @@ class ManageGuestTables extends Page implements Forms\Contracts\HasForms, Tables
                         $message .= "Cliquez ici pour voir votre invitation : " . route('event.invitation', [
                                 'reference' => $event->reference,
                                 'code' => $record->code,
+                                'v' => app(\App\Services\WeddingShareImage::class)->version($event),
                             ]);
                         $message .= "\n\n- NB : Les cadeaux doivent être non emballés.\n\n";
 
