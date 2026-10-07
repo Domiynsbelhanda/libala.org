@@ -27,7 +27,7 @@
     <meta property="og:image:alt" content="Invitation de {{ $guest->name }} au mariage civil de {{ $couple }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="{{ $imageUrl }}">
-    <link rel="stylesheet" href="{{ asset('templates/civil-ambre/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('templates/civil-ambre/style.css') . '?v=' . filemtime(public_path('templates/civil-ambre/style.css')) }}">
     <link rel="preload" as="image" href="{{ $hasPhoto ? $photoUrl : asset('templates/civil-ambre/background.png') }}">
 </head>
 <body>
