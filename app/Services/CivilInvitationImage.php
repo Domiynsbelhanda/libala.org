@@ -28,16 +28,16 @@ class CivilInvitationImage
         $amber = imagecolorallocate($image, 143, 66, 30);
         $serif = public_path('templates/civil-ambre/fonts/CormorantGaramond.ttf');
         $script = public_path('templates/civil-ambre/fonts/GreatVibes-Regular.ttf');
-        $this->text($image, 'LE BONHEUR DE SE DIRE OUI', 22, $hasPhoto ? 620 : 340, $serif, $amber);
-        $this->text($image, 'Mariage civil', 48, $hasPhoto ? 690 : 425, $serif, $ink);
-        $this->text($image, $wedding->event->groom_name . ' & ' . $wedding->event->bride_name, 55, $hasPhoto ? 775 : 525, $script, $ink);
-        $ruleY = $hasPhoto ? 810 : 570;
+        $this->text($image, 'LE BONHEUR DE SE DIRE OUI', 22, $hasPhoto ? 675 : 340, $serif, $amber);
+        $this->text($image, 'Mariage civil', 48, $hasPhoto ? 740 : 425, $serif, $ink);
+        $this->text($image, $wedding->event->groom_name . ' & ' . $wedding->event->bride_name, 55, $hasPhoto ? 815 : 525, $script, $ink);
+        $ruleY = $hasPhoto ? 850 : 570;
         imageline($image, 430, $ruleY, 570, $ruleY, $amber);
-        $this->text($image, 'Invitation de :', 30, $hasPhoto ? 865 : 635, $script, $amber);
-        $this->wrapped($image, $guest->name, 34, $hasPhoto ? 920 : 695, $serif, $ink, 2);
+        $this->text($image, 'Invitation de :', 30, $hasPhoto ? 895 : 635, $script, $amber);
+        $this->wrapped($image, $guest->name, 34, $hasPhoto ? 945 : 695, $serif, $ink, 2);
         $date = $wedding->date->locale('fr');
-        $this->text($image, mb_strtoupper($date->translatedFormat('l')), 20, $hasPhoto ? 1000 : 795, $serif, $amber);
-        $this->text($image, $date->translatedFormat('d F Y') . '  ·  ' . substr($wedding->time, 0, 5), 30, $hasPhoto ? 1050 : 850, $serif, $ink);
+        $this->text($image, mb_strtoupper($date->translatedFormat('l')), 20, $hasPhoto ? 1015 : 795, $serif, $amber);
+        $this->text($image, $date->translatedFormat('d F Y') . '  ·  ' . substr($wedding->time, 0, 5), 30, $hasPhoto ? 1060 : 850, $serif, $ink);
         $this->wrapped($image, $wedding->venue, 27, $hasPhoto ? 1110 : 925, $serif, $ink, 2, $hasPhoto ? 440 : 650);
         if ($wedding->address) $this->wrapped($image, $wedding->address, 20, $hasPhoto ? 1170 : 1005, $serif, $ink, 2, $hasPhoto ? 410 : 650);
         $temporary = tempnam($directory, 'civil-');
@@ -61,7 +61,7 @@ class CivilInvitationImage
     public function photoVersion(CivilWedding $wedding): string
     {
         $source = $this->photoSource($wedding);
-        return hash('sha256', 'civil-scene-v2|' . ($source ? hash_file('sha256', $source) : 'no-photo'));
+        return hash('sha256', 'civil-scene-v3|' . ($source ? hash_file('sha256', $source) : 'no-photo'));
     }
 
     public function photoPath(CivilWedding $wedding): string
@@ -118,13 +118,13 @@ class CivilInvitationImage
         imagedestroy($photo);
         // Ivory fades in gradually; shadows stay above the photograph.
         for ($y = 0; $y < 1500; $y++) {
-            $opacity = max(0, min(1, ($y - 350) / 410));
+            $opacity = max(0, min(1, ($y - 510) / 330));
             $opacity = $opacity * $opacity * (3 - 2 * $opacity);
             $color = imagecolorallocatealpha($image, 239, 217, 185, (int) round(127 * (1 - $opacity)));
             imageline($image, 0, $y, 999, $y, $color);
         }
         $frame = imagecreatefrompng(public_path('templates/civil-ambre/frame.png'));
-        imagecopyresampled($image, $frame, 0, 0, 0, 0, 1000, 1500, imagesx($frame), imagesy($frame));
+        imagecopyresampled($image, $frame, 0, -150, 0, 0, 1000, 1650, imagesx($frame), imagesy($frame));
         imagedestroy($frame);
         $temporary = tempnam($directory, 'scene-');
         try {
