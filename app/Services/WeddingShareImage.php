@@ -77,6 +77,12 @@ class WeddingShareImage
         return $path;
     }
 
+    public function photoSource(?Event $event): ?string
+    {
+        $source = $this->source($event);
+        return $source === $this->fallback() ? null : $source;
+    }
+
     private function source(?Event $event): string
     {
         $candidates = [$event?->couple_photo, $event?->w_image, ...($event?->gallery ?? [])];
@@ -110,7 +116,7 @@ class WeddingShareImage
         return public_path('template2/images/slider/invitation-shape-1.png');
     }
 
-    private function orient(\GdImage $image, string $path): \GdImage
+    public function orient(\GdImage $image, string $path): \GdImage
     {
         $exif = function_exists('exif_read_data') ? @exif_read_data($path) : false;
         $orientation = (int) ($exif['Orientation'] ?? 1);
