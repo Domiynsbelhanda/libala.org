@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 class CivilWedding extends Model
 {
-    protected $fillable = ['name', 'event_id', 'civil_template_id', 'date', 'time', 'venue', 'address'];
+    protected $fillable = ['name', 'event_id', 'civil_template_id', 'date', 'time', 'venue', 'address', 'theme_title', 'theme_image'];
     protected $casts = ['date' => 'date'];
 
     protected static function booted(): void

@@ -33,6 +33,23 @@ class CivilInvitationController extends Controller
         ]);
     }
 
+    public function themeImage(string $reference, string $code)
+    {
+        [$wedding] = $this->resolve($reference, $code);
+        $root = realpath(\Illuminate\Support\Facades\Storage::disk('public')->path(''));
+        $relative = $wedding->theme_image;
+        abort_unless($root && is_string($relative) && $relative !== '', 404);
+        $path = realpath($root . DIRECTORY_SEPARATOR . $relative);
+        abort_unless($path && str_starts_with($path, $root . DIRECTORY_SEPARATOR) && is_file($path) && is_readable($path), 404);
+        $info = @getimagesize($path);
+        abort_unless($info && in_array($info['mime'], ['image/jpeg', 'image/png', 'image/webp'], true), 404);
+        return response()->file($path, [
+            'Content-Type' => $info['mime'],
+            'Cache-Control' => 'private, no-cache',
+            'X-Content-Type-Options' => 'nosniff',
+        ]);
+    }
+
     public function share(string $reference, string $code)
     {
         [$wedding, $guest] = $this->resolve($reference, $code);

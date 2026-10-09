@@ -51,3 +51,5 @@ Route::get('/civil/{reference}/invitation/{code}/decor.jpg', [\App\Http\Controll
 
 Route::get('/modeles/civil-jardin-ambre/photo.jpg', [\App\Http\Controllers\CivilInvitationController::class, 'previewPhoto'])->name('civil.preview.photo');
 Route::get('/civil/{reference}/invitation/{code}/photo.jpg', [\App\Http\Controllers\CivilInvitationController::class, 'photo'])->name('civil.photo');
+
+Route::get('/civil/{reference}/invitation/{code}/theme-image', [\App\Http\Controllers\CivilInvitationController::class, 'themeImage'])->name('civil.theme-image');

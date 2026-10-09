@@ -126,6 +126,38 @@ class CivilWeddingTest extends TestCase
             ->assertOk()->assertSee($guest->whatsappUrl(), false)->assertSee('id="share-whatsapp"', false);
     }
 
+    public function test_scrolling_invitation_separates_cover_guest_and_theme(): void
+    {
+        $wedding = $this->ready();
+        $wedding->update(['theme_title' => 'Chocolat & ivoire', 'theme_image' => 'civil-themes/palette.jpg']);
+        $guest = $wedding->guests()->first();
+        $response = $this->get($guest->invitationUrl())->assertOk();
+        $response->assertSeeInOrder(['Invitation Mariage Civil', 'Maison communale', 'guest-name', 'theme-title', 'theme-image']);
+        $response->assertSee('Chocolat &amp; ivoire', false);
+        preg_match('/<header.*?<\/header>/s', $response->getContent(), $cover);
+        $this->assertStringNotContainsString('id="guest-name"', $cover[0]);
+        $wedding->update(['theme_image' => null]);
+        $this->get($guest->invitationUrl())->assertDontSee('id="theme-title"', false);
+    }
+
+    public function test_theme_image_is_served_from_upload_without_public_storage_link(): void
+    {
+        \Illuminate\Support\Facades\Storage::fake('public');
+        $disk = \Illuminate\Support\Facades\Storage::disk('public');
+        $disk->put('civil-themes/theme.jpg', file_get_contents(public_path('core/images/couple-1.jpg')));
+        $wedding = $this->ready();
+        $wedding->update(['theme_image' => 'civil-themes/theme.jpg']);
+        $guest = $wedding->guests()->first();
+        $url = route('civil.theme-image', [$wedding->reference, $guest->code], false);
+        $this->get($url)->assertOk()->assertHeader('Content-Type', 'image/jpeg');
+        $this->get($guest->invitationUrl())->assertSee('src="' . $url . '"', false);
+        $this->get(route('civil.theme-image', [$wedding->reference, 'invalid']))->assertNotFound();
+        $wedding->update(['theme_image' => '../outside.jpg']);
+        $this->get($url)->assertNotFound();
+        $wedding->update(['theme_image' => 'civil-themes/missing.jpg']);
+        $this->get($url)->assertNotFound();
+    }
+
     public function test_new_admin_resource_requires_authentication_and_scopes_managers(): void
     {
         $wedding = $this->ready();

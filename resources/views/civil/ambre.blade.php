@@ -8,7 +8,7 @@
     $imageUrl = $preview ? route('civil.preview.image') : route('civil.image', ['reference' => $wedding->reference, 'code' => $guest->code, 'v' => app(\App\Services\CivilInvitationImage::class)->version($wedding, $guest)]);
 @endphp
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="civil-scroll-document">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -30,21 +30,19 @@
     <link rel="stylesheet" href="{{ asset('templates/civil-ambre/style.css') . '?v=' . filemtime(public_path('templates/civil-ambre/style.css')) }}">
     <link rel="preload" as="image" href="{{ $hasPhoto ? $photoUrl : asset('templates/civil-ambre/background.png') }}">
 </head>
-<body>
+<body class="civil-scroll-page">
     <aside class="ambient-caption" aria-hidden="true"><span>Un oui.<br>Pour toute une vie.</span><small>JARDIN D’AMBRE · LIBALA</small></aside>
-    <main class="civil-card {{ $hasPhoto ? 'civil-card--photo' : '' }}" aria-label="Invitation au mariage civil">
+    <main class="civil-page">
+    <header class="civil-card {{ $hasPhoto ? 'civil-card--photo' : '' }}" aria-label="Invitation au mariage civil">
         @if($hasPhoto)<img class="civil-photo" src="{{ $photoUrl }}" alt="{{ $couple }}, entourés de fleurs et de drapés" fetchpriority="high">
         <div class="civil-photo-veil" aria-hidden="true"></div>
         <img class="civil-frame" src="{{ asset('templates/civil-ambre/frame.png') }}" alt="" aria-hidden="true">@endif
         <div class="civil-safe-area">
             <div class="civil-content">
-                <p class="eyebrow">Le bonheur de se dire oui</p>
-                <h1>Mariage civil</h1>
+                <h1>Invitation Mariage Civil</h1>
                 <p class="couple"><span>{{ $couple }}</span></p>
                 <div class="ornament" aria-hidden="true">✧</div>
-                <p class="invitation-label">Invitation de :</p>
-                <h2>{{ $guest->name }}</h2>
-                <div class="schedule">
+                <div class="schedule civil-cover-schedule">
                     <p class="day">{{ $date->translatedFormat('l') }}</p>
                     <p class="date">{{ $date->translatedFormat('d F Y') }}</p>
                     <p class="time">À {{ str_replace(':', 'h', substr($wedding->time, 0, 5)) }}</p>
@@ -52,7 +50,26 @@
                 <div class="place"><p class="venue">{{ $wedding->venue }}</p>@if($wedding->address)<p class="address">{{ $wedding->address }}</p>@endif</div>
             </div>
         </div>
-        <span class="card-footer">{{ $preview ? 'APERÇU · JARDIN D’AMBRE' : 'LIBALA.ORG' }}</span>
+    </header>
+    <section class="civil-guest-section" aria-labelledby="guest-name">
+        <p class="eyebrow">Une attention rien que pour vous</p>
+        <p class="invitation-label">Invitation de :</p>
+        <h2 id="guest-name">{{ $guest->name }}</h2>
+        <div class="ornament" aria-hidden="true">✧</div>
+        <p class="civil-welcome">Nous serions heureux de vous avoir à nos côtés.</p>
+        <div class="schedule">
+            <p class="day">{{ $date->translatedFormat('l') }}</p>
+            <p class="date">{{ $date->translatedFormat('d F Y') }}</p>
+            <p class="time">À {{ str_replace(':', 'h', substr($wedding->time, 0, 5)) }}</p>
+        </div>
+    </section>
+    @if($wedding->theme_image)
+    <section class="civil-theme-section" aria-labelledby="theme-title">
+        <h2 id="theme-title">{{ $wedding->theme_title ?: 'Notre thème' }}</h2>
+        <img src="{{ route('civil.theme-image', ['reference' => $wedding->reference, 'code' => $guest->code], false) }}" alt="{{ $wedding->theme_title ?: 'Notre thème' }}" loading="lazy">
+    </section>
+    @endif
+    <footer class="civil-page-footer">{{ $preview ? 'APERÇU · JARDIN D’AMBRE' : 'LIBALA.ORG' }}</footer>
     </main>
     <script src="{{ asset('templates/civil-ambre/fit.js') }}" defer></script>
 </body>

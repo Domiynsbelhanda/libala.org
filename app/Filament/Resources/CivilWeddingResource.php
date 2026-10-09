@@ -65,6 +65,13 @@ class CivilWeddingResource extends Resource
                     Forms\Components\TextInput::make('venue')->label('Commune / lieu')->maxLength(100)->required(),
                     Forms\Components\TextInput::make('address')->label('Adresse (facultatif)')->maxLength(160),
                 ])->columns(2),
+            Forms\Components\Section::make('Thème du mariage')->schema([
+                Forms\Components\TextInput::make('theme_title')->label('Titre du thème')->placeholder('Notre thème')->maxLength(120),
+                Forms\Components\FileUpload::make('theme_image')->label('Image du thème')->image()
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])->maxSize(10240)
+                    ->disk('public')->directory('civil-themes')->visibility('public')
+                    ->helperText('L’image s’affiche en entier, sous le titre, en bas de l’invitation.'),
+            ]),
         ]);
     }
 
