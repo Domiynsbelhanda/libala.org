@@ -47,7 +47,6 @@
                     <p class="date">{{ $date->translatedFormat('d F Y') }}</p>
                     <p class="time">À {{ str_replace(':', 'h', substr($wedding->time, 0, 5)) }}</p>
                 </div>
-                <div class="place"><p class="venue">{{ $wedding->venue }}</p>@if($wedding->address)<p class="address">{{ $wedding->address }}</p>@endif</div>
             </div>
         </div>
     </header>
@@ -56,12 +55,27 @@
         <p class="invitation-label">Invitation de :</p>
         <h2 id="guest-name">{{ $guest->name }}</h2>
         <div class="ornament" aria-hidden="true">✧</div>
-        <p class="civil-welcome">Nous serions heureux de vous avoir à nos côtés.</p>
+
+        <div class="place">
+            <p class="venue">
+                {{ $wedding->venue }}
+            </p>
+            @if($wedding->address)
+                <p class="address">
+                    {{ $wedding->address }}
+                </p>
+            @endif
+        </div>
+
         <div class="schedule">
             <p class="day">{{ $date->translatedFormat('l') }}</p>
             <p class="date">{{ $date->translatedFormat('d F Y') }}</p>
             <p class="time">À {{ str_replace(':', 'h', substr($wedding->time, 0, 5)) }}</p>
         </div>
+
+        <div class="ornament" aria-hidden="true">✧</div>
+
+        <p class="civil-welcome">Nous serions heureux de vous avoir à nos côtés.</p>
     </section>
     @if($wedding->theme_image)
     <section class="civil-theme-section" aria-labelledby="theme-title">
